@@ -25,8 +25,8 @@ class Items extends Migration
 				'unique'		=> true
 			],
 			'category_id'	=>[
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
+				'type'			=> 'INT',
+				'unsigned'		=> true,
 			],
 
 		];

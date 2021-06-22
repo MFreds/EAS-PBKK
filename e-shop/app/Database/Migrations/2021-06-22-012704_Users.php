@@ -13,15 +13,7 @@ class Users extends Migration
 				'type'			=> 'INT',
 				'unsigned'		=> true,
 				'auto_increment'=>true,
-			],
-			'alamat'	=>[
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
-			],
-			'username'	=>[
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
-				'unique'		=> true
+				
 			],
 			'email'	=>[
 				'type'			=> 'VARCHAR',
@@ -30,7 +22,16 @@ class Users extends Migration
 			],
 			'password'	=>[
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
+				'constraint'	=> 300,
+			],
+			'created_at'	=>[
+				'type'			=> 'DATETIME',
+			],
+			'updated_at'	=>[
+				'type'			=> 'DATETIME',
+			],
+			'deleted_at'	=>[
+				'type'			=> 'DATETIME',
 			],
 
 		];

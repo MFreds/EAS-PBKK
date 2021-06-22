@@ -35,11 +35,11 @@
             <div class="shop-menu">
                 <ul>
                     <li class="topauth">
-                        <a href="auth.html">
+                        <a href="/auth">
                             <i class="fa fa-lock"></i>
                             <span class="shop-menu-ttl">Registration</span>
                         </a>
-                        <a href="auth.html">
+                        <a href="/auth">
                             <span class="shop-menu-ttl">Login</span>
                         </a>
                     </li>
