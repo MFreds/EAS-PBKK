@@ -12,4 +12,8 @@ class Home extends BaseController
 	{
 		return view('auth');
 	}
+	public function admin()
+	{
+		return view('admin');
+	}
 }

@@ -35,6 +35,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/auth', 'Register::index');
 $routes->post('/auth/register', 'Register::process');
+
+$routes->get('/admin', 'Home::admin');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
