@@ -66,5 +66,12 @@ class Authorization extends BaseController
             session()->setFlashdata('error_log', 'Email tidak ditemukan silahkan mendaftar terlebih dahulu');
             return redirect()->back();
         }
+
+        
+    }
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/auth');
     }
 }
