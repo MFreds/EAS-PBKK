@@ -17,16 +17,27 @@ class Items extends Migration
 			'product_name'	=>[
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 100,
-				'unique'		=> true
+			],
+			'vendor'	=>[
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 100,
 			],
 			'description'	=>[
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
-				'unique'		=> true
+				'constraint'	=> 1024,
 			],
 			'category_id'	=>[
 				'type'			=> 'INT',
 				'unsigned'		=> true,
+			],
+			'created_at'	=>[
+				'type'			=> 'DATETIME',
+			],
+			'updated_at'	=>[
+				'type'			=> 'DATETIME',
+			],
+			'deleted_at'	=>[
+				'type'			=> 'DATETIME',
 			],
 
 		];

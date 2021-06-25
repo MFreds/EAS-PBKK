@@ -49,15 +49,21 @@ class Authorization extends BaseController
 
         if ($dataUser) {
             // echo $dataUser;
-            // die();
-            
             if (password_verify($password, $dataUser['password'])) {
+                
                 $ses_data=[
                     'email' => $dataUser['email'],
-                    'logged_in' => TRUE
+                    'logged_in' => TRUE,
+                    'role'  => $dataUser['role']
                 ];
+                $role=ROLE_CUSTOMER;
+                if($dataUser['role']===ROLE_ADMIN){
+                    $role=ROLE_ADMIN;
+                    session()->set($ses_data);
+                    return redirect()->to('/admin');
+                }
                 session()->set($ses_data);
-                return redirect()->to('/admin');
+                return redirect()->to('/');
             } else {
                 session()->setFlashdata('error_log', 'Password salah');
                 return redirect()->back();

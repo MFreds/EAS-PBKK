@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Users extends Migration
+class ItemImages extends Migration
 {
 	public function up()
 	{
@@ -12,22 +12,16 @@ class Users extends Migration
 			'id' => [
 				'type'			=> 'INT',
 				'unsigned'		=> true,
-				'auto_increment'=> true,
-				
+				'auto_increment'=>true,
 			],
-			'email'	=>[
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
-				'unique'		=> true
-			],
-			'role'	=>[
+			'item_id'	=>[
 				'type'			=> 'INT',
-				'constraint'	=> 2,
-				'deafult'		=> ROLE_CUSTOMER
+				'unsigned'		=> true,
 			],
-			'password'	=>[
+			'path'	=>[
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 300,
+				'constraint'	=> 512,
+				'unique'		=> true
 			],
 			'created_at'	=>[
 				'type'			=> 'DATETIME',
@@ -40,15 +34,16 @@ class Users extends Migration
 			],
 
 		];
+
 		$this->forge->addField($arr);
 
 		$this->forge->addKey('id',true);
-
-		$this->forge->createtable('users',True);
+		$this->forge->addForeignKey('item_id','items','id','CASCADE','CASCADE');
+		$this->forge->createtable('item_images',True);
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('users');
+		$this->forge->dropTable('item_images');
 	}
 }

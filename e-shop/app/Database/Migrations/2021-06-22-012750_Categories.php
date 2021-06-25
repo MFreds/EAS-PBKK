@@ -14,7 +14,7 @@ class Categories extends Migration
 				'unsigned'		=> true,
 				'auto_increment'=>true,
 			],
-			'kategori'	=>[
+			'category'	=>[
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 100,
 				'unique'		=> true

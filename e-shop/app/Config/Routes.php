@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/admin', 'Home::admin');
+$routes->get('/admin/products/add', 'ItemsInventory::new_item');
+$routes->post('/admin/products/add', 'ItemsInventory::save');
 $routes->get('/auth', 'Authorization::index');
 $routes->post('/auth/register', 'Authorization::register');
 $routes->post('/auth/login', 'Authorization::login');
