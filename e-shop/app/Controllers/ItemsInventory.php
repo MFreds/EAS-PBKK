@@ -17,6 +17,16 @@ class ItemsInventory extends BaseController
 		echo view('admin/admin_inv_new',$data);
 	}
 
+    public function list_item()
+	{
+		$cat= new Category();
+        $data['categories'] = $cat->findAll();
+        $item= new Item();
+        $data['items'] = $item->findAll();
+
+		echo view('admin/admin_inv_list',$data);
+	}
+
 	public function save()
     {
         $name = $this->request->getPost('product_name');
