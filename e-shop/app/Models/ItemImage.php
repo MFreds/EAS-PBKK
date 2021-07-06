@@ -8,13 +8,13 @@ class ItemImage extends Model
 {
 	protected $DBGroup              = 'default';
 	protected $table                = 'item_images';
-	protected $primaryKey           = 'id';
+	protected $primaryKey           = 'im_id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['id','item_id','path'];
+	protected $allowedFields        = ['im_id','item_id','path'];
 
 	// Dates
 	protected $useTimestamps        = true;

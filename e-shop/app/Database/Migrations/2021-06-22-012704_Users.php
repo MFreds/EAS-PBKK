@@ -9,7 +9,7 @@ class Users extends Migration
 	public function up()
 	{
 		$arr=[
-			'id' => [
+			'u_id' => [
 				'type'			=> 'INT',
 				'unsigned'		=> true,
 				'auto_increment'=> true,
@@ -42,7 +42,7 @@ class Users extends Migration
 		];
 		$this->forge->addField($arr);
 
-		$this->forge->addKey('id',true);
+		$this->forge->addKey('u_id',true);
 
 		$this->forge->createtable('users',True);
 	}

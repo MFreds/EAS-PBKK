@@ -9,7 +9,7 @@ class Items extends Migration
 	public function up()
 	{
 		$arr=[
-			'id' => [
+			'i_id' => [
 				'type'			=> 'INT',
 				'unsigned'		=> true,
 				'auto_increment'=>true,
@@ -25,6 +25,14 @@ class Items extends Migration
 			'description'	=>[
 				'type'			=> 'VARCHAR',
 				'constraint'	=> 1024,
+			],
+			'price'	=>[
+				'type'			=> 'INT',
+				'unsigned'		=> true,
+			],
+			'stock'	=>[
+				'type'			=> 'INT',
+				'unsigned'		=> true,
 			],
 			'category_id'	=>[
 				'type'			=> 'INT',
@@ -44,8 +52,8 @@ class Items extends Migration
 
 		$this->forge->addField($arr);
 
-		$this->forge->addKey('id',true);
-		$this->forge->addForeignKey('category_id','categories','id','CASCADE','CASCADE');
+		$this->forge->addKey('i_id',true);
+		$this->forge->addForeignKey('category_id','categories','c_id','CASCADE','CASCADE');
 		$this->forge->createtable('items',True);
 	}
 

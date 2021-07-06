@@ -12,7 +12,8 @@ class API extends BaseController
 	public function index()
 	{
 		$items= new Item();
-		$res= $items->getFewItems(2,'asc');
+		// $res= $items->getFewItems(4,'asc');
+		$res= $items->getFullItems();
 		echo '<pre>'; print_r($res); echo '</pre>';
 	}
 }

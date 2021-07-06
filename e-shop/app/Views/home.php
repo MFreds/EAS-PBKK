@@ -32,7 +32,7 @@
             <ul class="fr-pop-tabs sections-show">
                 <li><a data-frpoptab-num="0" data-frpoptab="#frpoptab-tab-0" href="#" class="active">All Categories</a></li>
                 <?php foreach ($categories as $c) : ?>
-                    <li><a data-frpoptab-num="<?= $c['id']?>" data-frpoptab="#frpoptab-tab-<?= $c['id']?>" href="<?= $c['slug'] ?>"><?= $c['category'] ?></a></li>
+                    <li><a data-frpoptab-num="<?= $c['c_id']?>" data-frpoptab="#frpoptab-tab-<?= $c['c_id']?>" href="<?= $c['slug'] ?>"><?= $c['category'] ?></a></li>
                 <?php endforeach ?>
             </ul>
             <div class="fr-pop-tab-cont">
@@ -71,12 +71,12 @@
                     </ul>
                 </div>
                 <?php foreach ($categories as $c) : ?>
-                    <p data-frpoptab-num="<?= $c['id']?>" class="fr-pop-tab-mob" data-frpoptab="#frpoptab-tab-<?= $c['id']?>"><?= $c['category']?></p>
-                    <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-<?= $c['id']?>">
+                    <p data-frpoptab-num="<?= $c['c_id']?>" class="fr-pop-tab-mob" data-frpoptab="#frpoptab-tab-<?= $c['c_id']?>"><?= $c['category']?></p>
+                    <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-<?= $c['c_id']?>">
                         <ul class="slides">
                             <?php foreach ($items as $item) : ?>
                                 
-                                <?php if ($item['category_id']===$c['id']) : ?>  
+                                <?php if ($item['category_id']===$c['c_id']) : ?>  
                                     <li class="prod-i">
                                         <div class="prod-i-top">
                                             <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="uploads/<?= $item['path'] ?>" alt="Aspernatur excepturi rem"><!-- NO SPACE --></a>
