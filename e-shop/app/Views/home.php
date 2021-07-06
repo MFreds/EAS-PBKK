@@ -31,10 +31,9 @@
             <h3 class="component-ttl"><span>Popular products</span></h3>
             <ul class="fr-pop-tabs sections-show">
                 <li><a data-frpoptab-num="1" data-frpoptab="#frpoptab-tab-1" href="#" class="active">All Categories</a></li>
-                <li><a data-frpoptab-num="2" data-frpoptab="#frpoptab-tab-2" href="#">Women</a></li>
-                <li><a data-frpoptab-num="3" data-frpoptab="#frpoptab-tab-3" href="#">Men</a></li>
-                <li><a data-frpoptab-num="4" data-frpoptab="#frpoptab-tab-4" href="#">Kids</a></li>
-                <li><a data-frpoptab-num="5" data-frpoptab="#frpoptab-tab-5" href="#">Shoes</a></li>
+                <?php foreach ($categories as $c) : ?>
+                    <li><a data-frpoptab-num="<?= $c['id'] +2?>" data-frpoptab="#frpoptab-tab-<?= $c['id'] +2?>" href="<?= $c['slug'] ?>"><?= $c['category'] ?></a></li>
+                <?php endforeach ?>
             </ul>
             <div class="fr-pop-tab-cont">
                 <p data-frpoptab-num="1" class="fr-pop-tab-mob active" data-frpoptab="#frpoptab-tab-1">All Categories</p>

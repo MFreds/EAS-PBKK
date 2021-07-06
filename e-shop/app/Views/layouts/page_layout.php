@@ -65,91 +65,19 @@
                 <!-- Catalog menu - start -->
                 <div class="topcatalog">
                     <a class="topcatalog-btn" href="catalog-list.html"><span>All</span> catalog</a>
+                    <?php 
+                        $cat= new App\Models\Category();
+                        $cats = $cat->findAll();
+                    ;?>
                     <ul class="topcatalog-list">
-                        <li>
-                            <a href="catalog-list.html">
-                                Women
-                            </a>
-                            <i class="fa fa-angle-right"></i>
-                            <ul>
-                                <li>
-                                    <a href="catalog-list.html">
-                                        Knitwear
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="catalog-list.html">
-                                        Dresses
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="catalog-list.html">
-                                        Bags
-                                    </a>
-                                    <i class="fa fa-angle-right"></i>
-                                    <ul>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Shoulder Bags
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Falabella
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Becks
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Clutches
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Travel Bags
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="catalog-list.html">
-                                        Accessories
-                                    </a>
-                                    <i class="fa fa-angle-right"></i>
-                                    <ul>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Sunglasses
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Tech Cases
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Jewelry
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="catalog-list.html">
-                                                Stella
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="catalog-list.html">
-                                        Coats & Jackets
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        <?php foreach ($cats as $c) : ?>
+                            <li>
+                                <a href="catalog-list.html">
+                                    <?= $c['category'] ?>
+                                </a>
+                            </li>
+                        <?php endforeach ?>
+                        
                     </ul>
                 </div>
                 <!-- Catalog menu - end -->
@@ -162,7 +90,7 @@
                             Home
                         </a>
                     </li>
-                    <li class="menu-item-has-children">
+                    <!-- <li class="menu-item-has-children">
                         <a href="catalog-list.html">
                             Catalog <i class="fa fa-angle-down"></i>
                         </a>
@@ -173,7 +101,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="mainmenu-more">
                         <span>...</span>
                         <ul class="mainmenu-sub"></ul>

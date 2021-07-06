@@ -39,4 +39,16 @@ class Item extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
+
+	public function getFullItems(){
+		return $this->db->table('items')
+				-> join('categories as c','c.id=items.category_id')
+				-> join('item_images as im','im.item_id=items.id')
+				->groupBy('items.id')->get()->getResultArray();
+	}
+	public function getAllImages($id){
+		return $this->db->table('items')
+				-> join('item_images as im','im.item_id=items.id')
+				->where('items.id',$id)->get()->getResultArray();
+	}
 }

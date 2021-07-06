@@ -57,7 +57,7 @@ class Authorization extends BaseController
                     'role'  => $dataUser['role']
                 ];
                 $role=ROLE_CUSTOMER;
-                if($dataUser['role']===ROLE_ADMIN){
+                if($dataUser['role']==ROLE_ADMIN){
                     $role=ROLE_ADMIN;
                     session()->set($ses_data);
                     return redirect()->to('/admin');
