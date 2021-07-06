@@ -41,12 +41,18 @@ class ItemsInventory extends BaseController
         $category = $this->request->getPost('category');
         $vendor = $this->request->getPost('vendor');
         $description = $this->request->getPost('description');
+        $price = $this->request->getPost('price');
+        $stock = $this->request->getPost('stock');
+        // print_r($this->request->getPost('stock'));
+        // die();
 
         helper(['form']);
 		$rules = [
-            'product_name'         => 'required|min_length[1]|max_length[100]',
+            'product_name'         => 'required|min_length[1]|max_length[100]|is_unique[items.product_name]',
             'category'      => 'required',
             'vendor'         => 'required|min_length[1]|max_length[100]',
+            'stock'      => 'required',
+            'price'      => 'required',
             'description'      => 'required|min_length[1]|max_length[1000]',
         ];
         if (!$this->validate($rules)) {
@@ -58,6 +64,8 @@ class ItemsInventory extends BaseController
             'product_name' => $name,
             'category_id' => $category,
             'vendor' => $vendor,
+            'price' => $price,
+            'stock' => $stock,
             'description' => $description,
         ];
         $item->save($data);
@@ -76,7 +84,7 @@ class ItemsInventory extends BaseController
             foreach($files['file_upload'] as $img){
                 $name=$img->getRandomName();
                 $data_uploads = [
-                    'item_id' => $item_data['id'],
+                    'item_id' => $item_data['i_id'],
                     'path' => $name
                 ];
  

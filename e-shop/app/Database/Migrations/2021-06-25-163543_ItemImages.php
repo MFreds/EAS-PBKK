@@ -9,7 +9,7 @@ class ItemImages extends Migration
 	public function up()
 	{
 		$arr=[
-			'id' => [
+			'im_id' => [
 				'type'			=> 'INT',
 				'unsigned'		=> true,
 				'auto_increment'=>true,
@@ -37,8 +37,8 @@ class ItemImages extends Migration
 
 		$this->forge->addField($arr);
 
-		$this->forge->addKey('id',true);
-		$this->forge->addForeignKey('item_id','items','id','CASCADE','CASCADE');
+		$this->forge->addKey('im_id',true);
+		$this->forge->addForeignKey('item_id','items','i_id','CASCADE','CASCADE');
 		$this->forge->createtable('item_images',True);
 	}
 

@@ -28,7 +28,7 @@
               
              <?php } ?>
 
-             <?= form_open_multipart(base_url('admin/products/edit/'.$items['id'])); ?>
+             <?= form_open_multipart(base_url('admin/products/edit/'.$items['i_id'])); ?>
              <div class="form-group">
                  <label for="">Product Name</label>
                  <input type="text" name="product_name" class="form-control" value="<?php echo $items['product_name']; ?>"> 
@@ -38,7 +38,7 @@
                 <select class="custom-select" name="category" id="">
                     <option selected>Choose category</option>
                     <?php foreach ($categories as $c) : ?>
-                        <option value="<?= $c['id'] ?>"><?= $c['category'] ?></option>
+                        <option value="<?= $c['c_id'] ?>"><?= $c['category'] ?></option>
                     <?php endforeach ?>
                 </select>
             </div>

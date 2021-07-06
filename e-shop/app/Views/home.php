@@ -30,18 +30,19 @@
         <div class="fr-pop-wrap">
             <h3 class="component-ttl"><span>Popular products</span></h3>
             <ul class="fr-pop-tabs sections-show">
-                <li><a data-frpoptab-num="1" data-frpoptab="#frpoptab-tab-1" href="#" class="active">All Categories</a></li>
+                <li><a data-frpoptab-num="0" data-frpoptab="#frpoptab-tab-0" href="#" class="active">All Categories</a></li>
                 <?php foreach ($categories as $c) : ?>
-                    <li><a data-frpoptab-num="<?= $c['id'] +2?>" data-frpoptab="#frpoptab-tab-<?= $c['id'] +2?>" href="<?= $c['slug'] ?>"><?= $c['category'] ?></a></li>
+                    <li><a data-frpoptab-num="<?= $c['c_id']?>" data-frpoptab="#frpoptab-tab-<?= $c['c_id']?>" href="<?= $c['slug'] ?>"><?= $c['category'] ?></a></li>
                 <?php endforeach ?>
             </ul>
             <div class="fr-pop-tab-cont">
-                <p data-frpoptab-num="1" class="fr-pop-tab-mob active" data-frpoptab="#frpoptab-tab-1">All Categories</p>
-                <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-1">
+                <p data-frpoptab-num="0" class="fr-pop-tab-mob active" data-frpoptab="#frpoptab-tab-0">All Categories</p>
+                <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-0">
                     <ul class="slides">
-                        <li class="prod-i">
+                        <?php foreach ($items as $item) : ?>
+                            <li class="prod-i">
                             <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/250x350" alt="Aspernatur excepturi rem"><!-- NO SPACE --></a>
+                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="uploads/<?= $item['path'] ?>" alt="Aspernatur excepturi rem"><!-- NO SPACE --></a>
                                 <p class="prod-i-info">
                                     <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
                                     <a href="#" class="qview-btn prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
@@ -52,7 +53,7 @@
                                 </p>
                             </div>
                             <h3>
-                                <a href="product.html">Aspernatur excepturi rem</a>
+                                <a href="product.html"><?= $item['product_name'] ?></a>
                             </h3>
                             <p class="prod-i-price">
                                 <b>$90</b>
@@ -64,195 +65,49 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="prod-i">
-                            <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/277x250" alt="Aperiam tempore"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
-                                    <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="qview-btn prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
-                                    <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
-                                <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Add to cart</a>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="product.html">Aperiam tempore</a>
-                            </h3>
-                            <p class="prod-i-price">
-                                <b>$75</b>
-                            </p>
-                        </li>
+                        <?php endforeach ?>
+                        
+                        
                     </ul>
                 </div>
-                <p data-frpoptab-num="2" class="fr-pop-tab-mob" data-frpoptab="#frpoptab-tab-2">Kids</p>
-                <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-2">
-                    <ul class="slides">
-                        <li class="prod-i">
-                            <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/250x350" alt="Aspernatur excepturi rem"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
-                                    <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
-                                    <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
-                                <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Go to detail</a>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="product.html">Aspernatur excepturi rem</a>
-                            </h3>
-                            <p class="prod-i-price">
-                                <b>$90</b>
-                            </p>
-                            <div class="prod-i-skuwrapcolor">
-                                <ul class="prod-i-skucolor">
-                                    <li class="bx_active"><img src="img/color/red.jpg" alt="Red"></li>
-                                    <li><img src="img/color/blue.jpg" alt="Blue"></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="prod-i">
-                            <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/250x361" alt="Non ex sapiente deserunt"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
-                                    <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
-                                    <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
-                                <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Add to cart</a>
-                                </p>
-
-                                <div class="prod-sticker">
-                                    <p class="prod-sticker-3">-30%</p><p class="prod-sticker-4 countdown" data-date="29 Jan 2017, 14:30:00"></p>
-                                </div>
-                            </div>
-                            <h3>
-                                <a href="product.html">Non ex sapiente deserunt</a>
-                            </h3>
-                            <p class="prod-i-price">
-                                <b>$65</b>
-                            </p>
-                        </li>
-                        <li class="prod-i">
-                            <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/250x361" alt="Amet tempore unde"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
-                                    <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
-                                    <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
-                                <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Add to cart</a>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="product.html">Amet tempore unde</a>
-                            </h3>
-                            <p class="prod-i-price">
-                                <b>$85</b>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <p data-frpoptab-num="3" class="fr-pop-tab-mob" data-frpoptab="#frpoptab-tab-3">Women</p>
-                <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-3">
-                    <ul class="slides">
-                        <li class="prod-i">
-                            <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/250x302" alt="Amet tempore unde"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
-                                    <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
-                                    <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
-                                <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Add to cart</a>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="product.html">Amet tempore unde</a>
-                            </h3>
-                            <p class="prod-i-price">
-                                <b>$165</b>
-                            </p>
-                        </li>
-                        <li class="prod-i">
-                            <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/250x327" alt="Perspiciatis dolor"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
-                                    <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
-                                    <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
-                                <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Go to detail</a>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="product.html">Perspiciatis dolor</a>
-                            </h3>
-                            <p class="prod-i-price">
-                                <b>$205</b>
-                            </p>
-                            <div class="prod-i-skuwrapcolor">
-                                <ul class="prod-i-skucolor">
-                                    <li class="bx_active"><img src="img/color/red.jpg" alt="Red"></li>
-                                    <li><img src="img/color/blue.jpg" alt="Blue"></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <p data-frpoptab-num="4" class="fr-pop-tab-mob" data-frpoptab="#frpoptab-tab-4">Men</p>
-                <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-4">
-                    <ul class="slides">
-                        <li class="prod-i">
-                            <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/250x422" alt="Nisi provident atque"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
-                                    <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
-                                    <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
-                                <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Add to cart</a>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="product.html">Nisi provident atque</a>
-                            </h3>
-                            <p class="prod-i-price">
-                                <b>$130</b>
-                            </p>
-                        </li>
-                        <li class="prod-i">
-                            <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="http://placehold.it/250x385" alt="Eveniet nobis minus possimus"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
-                                    <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
-                                    <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
-                                <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Add to cart</a>
-                                </p>
-
-                                <div class="prod-sticker">
-                                    <p class="prod-sticker-1">NEW</p>
-                                </div>
-                            </div>
-                            <h3>
-                                <a href="product.html">Eveniet nobis minus possimus</a>
-                            </h3>
-                            <p class="prod-i-price">
-                                <b>$80</b>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
+                <?php foreach ($categories as $c) : ?>
+                    <p data-frpoptab-num="<?= $c['c_id']?>" class="fr-pop-tab-mob" data-frpoptab="#frpoptab-tab-<?= $c['c_id']?>"><?= $c['category']?></p>
+                    <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-<?= $c['c_id']?>">
+                        <ul class="slides">
+                            <?php foreach ($items as $item) : ?>
+                                
+                                <?php if ($item['category_id']===$c['c_id']) : ?>  
+                                    <li class="prod-i">
+                                        <div class="prod-i-top">
+                                            <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="uploads/<?= $item['path'] ?>" alt="Aspernatur excepturi rem"><!-- NO SPACE --></a>
+                                            <p class="prod-i-info">
+                                                <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
+                                                <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
+                                                <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
+                                            </p>
+                                            <p class="prod-i-addwrap">
+                                                <a href="#" class="prod-i-add">Go to detail</a>
+                                            </p>
+                                        </div>
+                                        <h3>
+                                            <a href="product.html"><?= $item['product_name'] ?></a>
+                                        </h3>
+                                        <p class="prod-i-price">
+                                            <b>$90</b>
+                                        </p>
+                                        <div class="prod-i-skuwrapcolor">
+                                            <ul class="prod-i-skucolor">
+                                                <li class="bx_active"><img src="img/color/red.jpg" alt="Red"></li>
+                                                <li><img src="img/color/blue.jpg" alt="Blue"></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                <?php endif ?>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                <?php endforeach ?>
+                
                 <p data-frpoptab-num="5" class="fr-pop-tab-mob" data-frpoptab="#frpoptab-tab-5">Shoes</p>
                 <div class="flexslider prod-items fr-pop-tab" id="frpoptab-tab-5">
                     <ul class="slides">

@@ -11,7 +11,7 @@ class Home extends BaseController
 		$cat= new Category();
         $data['categories'] = $cat->findAll();
 		$item= new Item();
-        $data['items'] = $item->findAll();
+        $data['items'] = $item->getFewItems(50,'desc');
 		echo view('home',$data);
 	}
 	public function auth()

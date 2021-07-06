@@ -38,7 +38,7 @@
                 <select class="custom-select" name="category" id="">
                     <option selected>Choose category</option>
                     <?php foreach ($categories as $c) : ?>
-                        <option value="<?= $c['id'] ?>"><?= $c['category'] ?></option>
+                        <option value="<?= $c['c_id'] ?>"><?= $c['category'] ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -46,6 +46,14 @@
              <div class="form-group">
                  <label for="">Vendor</label>
                  <input type="text" name="vendor" placeholder="Enter Vendor Name" class="form-control"> 
+             </div>
+             <div class="form-group">
+                 <label for="">Price</label>
+                 <input type="text" name="price" placeholder="Enter Base Price" class="form-control"> 
+             </div>
+             <div class="form-group">
+                 <label for="">Stock</label>
+                 <input type="number" name="stock" placeholder="Enter Current Stock" class="form-control"> 
              </div>
              <div class="form-group">
                  <label for="">Description</label>

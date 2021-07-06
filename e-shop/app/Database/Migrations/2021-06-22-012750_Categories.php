@@ -9,7 +9,7 @@ class Categories extends Migration
 	public function up()
 	{
 		$arr=[
-			'id' => [
+			'c_id' => [
 				'type'			=> 'INT',
 				'unsigned'		=> true,
 				'auto_increment'=>true,
@@ -28,7 +28,7 @@ class Categories extends Migration
 		];
 		$this->forge->addField($arr);
 
-		$this->forge->addKey('id',true);
+		$this->forge->addKey('c_id',true);
 
 		$this->forge->createtable('categories',True);
 	}
