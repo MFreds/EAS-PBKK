@@ -95,7 +95,7 @@ class ItemsInventory extends BaseController
         //$item_edit = new ItemEdit();
         $cat = new Category();
         $data['categories'] = $cat->findAll();
-        $data['items'] = $items->find($id);
+        $data['res'] = $items->getFUllItems();
         //$data['items'] = $items->PilihItem($id)->getRow();
         helper('form');
         echo view('admin/admin_inv_edit',$data);
