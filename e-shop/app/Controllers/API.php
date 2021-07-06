@@ -13,7 +13,7 @@ class API extends BaseController
 	{
 		$items= new Item();
 		// $res= $items->getFewItems(4,'asc');
-		$res= $items->getFullItems();
+		$res= $items->getFullItems_byId(1);
 		echo '<pre>'; print_r($res); echo '</pre>';
 	}
 }

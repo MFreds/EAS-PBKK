@@ -47,6 +47,12 @@ class Item extends Model
 				->groupBy('items.i_id')
 				->get()->getResultArray();
 	}
+	public function getFullItems_byId($id){
+		return $this->db->table('items')
+				-> join('categories as c','c.c_id=items.category_id')
+				->where('items.i_id',$id)
+				->get()->getRowArray();
+	}
 	public function getFewItems($limit,$order){
 		return $this->db->table('items')
 				-> join('categories as c','c._id=items.category_id')

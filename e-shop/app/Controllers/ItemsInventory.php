@@ -103,10 +103,34 @@ class ItemsInventory extends BaseController
         //$item_edit = new ItemEdit();
         $cat = new Category();
         $data['categories'] = $cat->findAll();
-        $data['res'] = $items->getFUllItems();
+        $data['items'] = $items->getFullItems_byId($id);
+        $data['img'] = $items->getAllImages($id);
         //$data['items'] = $items->PilihItem($id)->getRow();
         helper('form');
         echo view('admin/admin_inv_edit',$data);
+    }
+
+    public function edit_img($id){
+        // dapatkan input file berupa array
+        $files = $this->request->getFiles();
+ 
+        if($files){
+             
+            // ulangi insert gambar ke table galery menggunakan foreach
+            foreach($files['file_upload'] as $img){
+                $name=$img->getRandomName();
+                $data_uploads = [
+                    'path' => $name
+                ];
+ 
+                $img->move(ROOTPATH . 'public/uploads', $name);
+                $item_image->update($data_uploads);
+             
+            }
+            session()->setFlashdata('success', 'Berhasil membuat items dengan '.count($files['file_upload']).' files');
+            return redirect()->to('admin/products/add');
+         
+        }
     }
 
     // public function update($id)

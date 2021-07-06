@@ -16,7 +16,7 @@
 		<div class="container-fluid">
     <div class="card">
          
-         <div class="card-header">Form Upload</div>
+         <div class="card-header">Form Edit Produk</div>
 
          <div class="card-body">
 
@@ -36,9 +36,11 @@
             <div class="form-group">
                 <label for="">Category</label>
                 <select class="custom-select" name="category" id="">
-                    <option selected>Choose category</option>
+                    <option>Choose category</option>
                     <?php foreach ($categories as $c) : ?>
-                        <option value="<?= $c['c_id'] ?>"><?= $c['category'] ?></option>
+                        <option <?php if ($c['c_id'] == $items['c_id'] )
+                            echo "selected" ?>
+                        value="<?= $c['c_id'] ?>"><?= $c['category'] ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -48,14 +50,25 @@
                  <input type="text" name="vendor" class="form-control" value="<?php echo $items['vendor']; ?>"> 
              </div>
              <div class="form-group">
+                 <label for="">Price</label>
+                 <input type="text" name="price" class="form-control" value="<?php echo $items['price']; ?>"> 
+             </div>
+             <div class="form-group">
+                 <label for="">Stock</label>
+                 <input type="number" name="stock" class="form-control" value="<?php echo $items['stock']; ?>"> 
+             </div>
+             <div class="form-group">
                  <label for="">Description</label>
                  <input type="text" name="description" class="form-control" value="<?php echo $items['description']; ?>"> 
              </div>
              
               
              <div class="form-group">
-             <label for="">Files</label>
-                 <input type="file" name="file_upload[]" multiple> 
+             <label for="">Foto Produk</label>
+                    <?php foreach ($img as $im) : ?>
+                        <img src="<?php echo base_url('uploads/'.$im['path']) ?>" width="100" />
+                        <a title="Edit" href="" class="btn btn-info">Edit</a>
+                    <?php endforeach ?>
              </div>
 
              <div class="form-group">

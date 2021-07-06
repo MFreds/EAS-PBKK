@@ -20,6 +20,8 @@
                         <th>Product Names</th>
                         <th>Vendor</th>
                         <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
                         <th>Description</th>
                         <th>Action</th>
                     </tr>
@@ -30,6 +32,8 @@
                             <td scope="row"><?= $item['product_name'] ?></td>
                             <td><?= $item['vendor'] ?></td>
                             <td><?= $item['category_id'] ?></td>
+                            <td><?= $item['price'] ?></td>
+                            <td><?= $item['stock'] ?></td>
                             <td><?= $item['description'] ?></td>
                             <td>
                             <a title="Edit" href="./products/edit/<?=$item['i_id'];?>" class="btn btn-info">Edit</a>
