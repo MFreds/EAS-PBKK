@@ -21,6 +21,7 @@
                         <th>Vendor</th>
                         <th>Category</th>
                         <th>Description</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,9 +31,12 @@
                             <td><?= $item['vendor'] ?></td>
                             <td><?= $item['category_id'] ?></td>
                             <td><?= $item['description'] ?></td>
+                            <td>
+                            <a title="Edit" href="./products/edit/<?=$item['id'];?>" class="btn btn-info">Edit</a>
+                            <a title="Delete" href="<?= base_url("admin/products/delete/".$item['id']) ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ?')">Delete</a>
+                            </td>
                         </tr>
                     <?php endforeach ?>
-                        
                         
                     </tbody>
             </table>
