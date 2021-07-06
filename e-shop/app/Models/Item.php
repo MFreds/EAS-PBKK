@@ -46,6 +46,13 @@ class Item extends Model
 				-> join('item_images as im','im.item_id=items.id')
 				->groupBy('items.id')->get()->getResultArray();
 	}
+	public function getFewItems($limit,$order){
+		return $this->db->table('items')
+				-> join('categories as c','c.id=items.category_id')
+				-> join('item_images as im','im.item_id=items.id')
+				->groupBy('items.id')->orderBy("items.id",$order)
+				->limit($limit)->get()->getResultArray();
+	}
 	public function getAllImages($id){
 		return $this->db->table('items')
 				-> join('item_images as im','im.item_id=items.id')

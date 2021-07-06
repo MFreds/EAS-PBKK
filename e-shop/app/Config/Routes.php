@@ -47,6 +47,8 @@ $routes->post('/admin/products/update/(:num)', 'ItemsInventory::update/$1');
 
 $routes->get('/admin/delete/(:num)', 'ItemsInventory::delete/$1');
 
+
+$routes->get('/api/test', 'API::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
