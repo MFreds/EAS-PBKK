@@ -16,15 +16,15 @@ class Items extends Migration
 			],
 			'product_name'	=>[
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
+				'constraint'	=> 200,
 			],
 			'vendor'	=>[
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 100,
+				'constraint'	=> 200,
 			],
 			'description'	=>[
 				'type'			=> 'VARCHAR',
-				'constraint'	=> 1024,
+				'constraint'	=> 2048,
 			],
 			'price'	=>[
 				'type'			=> 'INT',
