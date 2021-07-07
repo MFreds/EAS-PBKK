@@ -42,14 +42,14 @@
                         <?php foreach ($items as $item) : ?>
                             <li class="prod-i">
                             <div class="prod-i-top">
-                                <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="uploads/<?= $item['path'] ?>" alt="Aspernatur excepturi rem"><!-- NO SPACE --></a>
-                                <p class="prod-i-info">
+                                <a href="<?php echo base_url('product/'.$item['i_id'])?>" class="prod-i-img"><!-- NO SPACE --><img src="<?php echo base_url('uploads/'.$item['path'])?>" alt="<?= $item['product_name'] ;?>"><!-- NO SPACE --></a>
+                                <!-- <p class="prod-i-info">
                                     <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
                                     <a href="#" class="qview-btn prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
                                     <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                </p>
+                                </p> -->
                                 <p class="prod-i-addwrap">
-                                    <a href="#" class="prod-i-add">Go to detail</a>
+                                    <a href="<?php echo base_url('product/'.$item['i_id'])?>" class="prod-i-add">Go to detail</a>
                                 </p>
                             </div>
                             <h3>
@@ -79,14 +79,14 @@
                                 <?php if ($item['category_id']===$c['c_id']) : ?>  
                                     <li class="prod-i">
                                         <div class="prod-i-top">
-                                            <a href="product.html" class="prod-i-img"><!-- NO SPACE --><img src="uploads/<?= $item['path'] ?>" alt="Aspernatur excepturi rem"><!-- NO SPACE --></a>
-                                            <p class="prod-i-info">
+                                            <a href="<?php echo base_url('product/'.$item['i_id'])?>" class="prod-i-img"><!-- NO SPACE --><img src="<?php echo base_url('uploads/'.$item['path'])?>" alt="Aspernatur excepturi rem"><!-- NO SPACE --></a>
+                                            <!-- <p class="prod-i-info">
                                                 <a href="#" class="prod-i-favorites"><span>Wishlist</span><i class="fa fa-heart"></i></a>
                                                 <a href="#" class="prod-i-qview"><span>Quick View</span><i class="fa fa-search"></i></a>
                                                 <a class="prod-i-compare" href="#"><span>Compare</span><i class="fa fa-bar-chart"></i></a>
-                                            </p>
+                                            </p> -->
                                             <p class="prod-i-addwrap">
-                                                <a href="#" class="prod-i-add">Go to detail</a>
+                                                <a href="<?php echo base_url('product/'.$item['i_id'])?>" class="prod-i-add">Go to detail</a>
                                             </p>
                                         </div>
                                         <h3>
@@ -165,7 +165,7 @@
         </div><!-- .fr-pop-wrap -->
 
         <!-- Special offer -->
-        <div class="discounts-wrap">
+        <!-- <div class="discounts-wrap">
             <h3 class="component-ttl"><span>Special offer</span></h3>
             <div class="flexslider discounts-list">
                 <ul class="slides">
@@ -263,9 +263,9 @@
                 <p>Special offer!<br>Limited time only</p>
                 <a href="catalog-list.html">Shop now</a>
             </div>
-        </div>
+        </div> -->
         <!-- Latest news -->
-        <div class="posts-wrap">
+        <!-- <div class="posts-wrap">
             <div class="posts-list">
                 <div class="posts-i">
                     <a class="posts-i-img" href="post.html">
@@ -304,7 +304,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Testimonials -->
         <div class="reviews-wrap">
             <div class="reviewscar-wrap">
