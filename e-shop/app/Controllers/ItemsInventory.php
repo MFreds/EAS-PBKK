@@ -138,26 +138,50 @@ class ItemsInventory extends BaseController
     }
 
     public function edit_img($id){
-        $items = new Item();
-        //$data['items'] = $items->getFullItems_byId($id);
-        $img = $items->getImages_byId($id);
-        //echo $img['path'];
-        $files = $this->request->getFiles('file_upload');
-        if($files)
-        {
-            $img_lama = $img['path'];
-            if(file_exists("uploads/".$img_lama)){
-                unlink("uploads/".$img_lama);
-            }
-            foreach($files['file_upload'] as $img){
-                $name=$img->getRandomName();
-                $data_uploads = [
-                    'path' => $name
-                ];
-                $img->move(ROOTPATH . 'public/uploads', $name);
-            }
-            return redirect()->to('/admin/products/edit/'.$items['i_id']);
+        // print(a);
+        // print($id);
+        $item_image = new ItemImage();
+        $data=$item_image->where('im_id',$id)->first();
+        // print_r($data);die();
+        // dapatkan input file berupa array
+        $files = $this->request->getFile('file_upload');
+        if($files){
+            // ulangi insert gambar ke table galery menggunakan foreach
+            $name=$files->getRandomName();
+            $data_uploads = [
+                'path' => $name
+            ];
+
+            $files->move(ROOTPATH . 'public/uploads', $name);
+            
+            
+            $item_image->update($id,$data_uploads);
+            session()->setFlashdata('success', 'Berhasil mengupdate gambar');
+            return redirect()->to('/admin/products/edit/'.$data['item_id']);
+         
         }
+
+        // die();
+        // $items = new Item();
+        // //$data['items'] = $items->getFullItems_byId($id);
+        // $img = $items->getImages_byId($id);
+        // //echo $img['path'];
+        // $files = $this->request->getFiles('file_upload');
+        // if($files)
+        // {
+        //     $img_lama = $img['path'];
+        //     if(file_exists("uploads/".$img_lama)){
+        //         unlink("uploads/".$img_lama);
+        //     }
+        //     foreach($files['file_upload'] as $img){
+        //         $name=$img->getRandomName();
+        //         $data_uploads = [
+        //             'path' => $name
+        //         ];
+        //         $img->move(ROOTPATH . 'public/uploads', $name);
+        //     }
+        //     return redirect()->to('/admin/products/edit/'.$items['i_id']);
+        // }
     }
 
     // public function update($id)
