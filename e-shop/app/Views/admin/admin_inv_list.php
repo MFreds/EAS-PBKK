@@ -37,7 +37,7 @@
                             <td><?= $item['description'] ?></td>
                             <td>
                             <a title="Edit" href="./products/edit/<?=$item['i_id'];?>" class="btn btn-info">Edit</a>
-                            <a title="Delete" href="<?= base_url("admin/products/delete/".$item['i_id']) ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ?')">Delete</a>
+                            <a title="Delete" href="<?= base_url("./products/delete/".$item['i_id']) ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ?')">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach ?>

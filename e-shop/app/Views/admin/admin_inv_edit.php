@@ -28,7 +28,7 @@
               
              <?php } ?>
 
-             <?= form_open_multipart(base_url('admin/products/add')); ?>
+             <?= form_open_multipart(base_url('admin/products/edit/'.$item['i_id'])); ?>
              <div class="form-group">
                  <label for="">Product Name</label>
                  <input type="text" name="product_name" value="<?= $item['product_name'] ?>" placeholder="Enter Product Name" class="form-control"> 
@@ -68,7 +68,7 @@
                     <?php foreach ($img as $im) : ?>
                         <input type="file" name="file_upload[]" multiple>
                         <img src="<?php echo base_url('uploads/'.$im['path']) ?>" width="200" />
-                        <a title="Edit" href="" class="btn btn-info">Edit</a>
+                        <a title="Edit" href="<?php echo base_url('/admin/products/edit/edit_image//'.$im['im_id']) ?>" class="btn btn-info">Edit</a>
                     <?php endforeach ?>
              </div>
 
