@@ -22,10 +22,11 @@ class Home extends BaseController
 	{
 		return view('admin/overview');
 	}
-	public function product($id=0)
+	public function product($id)
 	{
 		$item= new Item();
-        $data['items'] = $item->getFullItemsbyId();
+        $data['item'] = $item->getFullItemsbyId($id);
+		$data['images'] = $item->getAllImages($id);
 		echo view('product',$data);
 	}
 	public function product1()

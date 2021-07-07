@@ -35,7 +35,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/admin', 'Home::admin');
 $routes->get('/product/(:num)', 'Home::product/$1');
-$routes->get('/product/', 'Home::product1');
+$routes->get('/producttest/', 'Home::product1');
 $routes->get('/admin/products/', 'ItemsInventory::list_item');
 $routes->get('/admin/products/add', 'ItemsInventory::new_item');
 $routes->post('/admin/products/add', 'ItemsInventory::save');

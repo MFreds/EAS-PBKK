@@ -11,13 +11,13 @@
     <section class="container">
         <ul class="b-crumbs">
             <li>
-                <a href="/">Home</a>
+                <a href="<?php echo base_url('/')?>">Home</a>
             </li>
             <li>
-                <a href="catalog">Catalog</a>
+                <a href="<?php echo base_url('catalog')?>"">Catalog</a>
             </li>
             <li>
-                <a href="catalog"><?= $item['category'] ;?></a>
+                <a href="<?php echo base_url('catalog')?>"><?= $item['category'] ;?></a>
             </li>
             <li>
                 <span><?= $item['product_name'] ;?></span>
@@ -33,8 +33,8 @@
                     <ul class="prod2-slider-car">
                         <?php foreach ($images as $i) : ?>
                             <li>
-                                <a data-fancybox-group="product" class="fancy-img" href="uploads/<?= $i['path'] ?>">
-                                    <img src="uploads/<?= $i['path'] ?>" alt="">
+                                <a data-fancybox-group="product" class="fancy-img" href="<?php echo base_url('uploads/'.$i['path'])?>" >
+                                    <img src="<?php echo base_url('uploads/'.$i['path'])?>" alt="">
                                 </a>
                             </li>
                         <?php endforeach ?>
@@ -47,7 +47,7 @@
                             <?php $slide_id=$slide_id+1;?>
                             <li>
                                 <a data-slide-index="<?= $slide_id ?>" href="#">
-                                    <img class="scroll_active" src="uploads/<?= $i['path'] ?>" alt="">
+                                    <img class="scroll_active" src="<?php echo base_url('uploads/'.$i['path'])?>" alt="">
                                 </a>
                             </li>
                         <?php endforeach ?>
@@ -94,7 +94,7 @@
                     <div class="prod-tabs-wrap">
                         <ul class="prod-tabs">
                             <li><a data-prodtab-num="1" class="active" href="#" data-prodtab="#prod-tab-1">Description</a></li>
-                            <li><a data-prodtab-num="2" href="#" data-prodtab="#prod-tab-5">Reviews</a></li>
+                            <!-- <li><a data-prodtab-num="2" href="#" data-prodtab="#prod-tab-5">Reviews</a></li> -->
                         </ul>
                         <div class="prod-tab-cont">
 
@@ -103,7 +103,7 @@
                                 <p><?= $item['description'] ;?></p>
                             </div>
                             
-                            <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-5">Reviews</p>
+                            <!-- <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-5">Reviews</p>
                             <div class="prod-tab" id="prod-tab-5">
                                 <ul class="reviews-list">
                                     <li class="reviews-i existimg">
@@ -190,7 +190,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
