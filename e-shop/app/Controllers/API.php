@@ -13,7 +13,8 @@ class API extends BaseController
 	{
 		$items= new Item();
 		// $res= $items->getFewItems(4,'asc');
-		$res= $items->getFullItems_byId(1);
+		// $res= $items->getFullItems_byId(1);
+		$res = $items->getImages_byId(1);
 		echo '<pre>'; print_r($res); echo '</pre>';
 	}
 }

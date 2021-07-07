@@ -65,4 +65,10 @@ class Item extends Model
 				-> join('item_images as im','im.item_id=items.i_id')
 				->where('items.i_id',$id)->get()->getResultArray();
 	}
+	public function getImages_byId($id){
+		return $this->db->table('items')
+				-> join('item_images as im','im.item_id=items.i_id')
+				->where('items.i_id',$id)
+				->get()->getRowArray();
+	}
 }

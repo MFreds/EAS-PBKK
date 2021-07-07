@@ -65,9 +65,9 @@
               
              <div class="form-group">
              <label for="">Foto Produk</label>
+             <input type="file" name="file_upload[]" class="form-control" multiple>
                     <?php foreach ($img as $im) : ?>
-                        <img src="<?php echo base_url('uploads/'.$im['path']) ?>" width="100" />
-                        <a title="Edit" href="" class="btn btn-info">Edit</a>
+                        <img src="<?php echo base_url('uploads/'.$im['path']) ?>" width="200" />
                     <?php endforeach ?>
              </div>
 

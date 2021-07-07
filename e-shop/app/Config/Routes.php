@@ -43,7 +43,7 @@ $routes->post('/auth/login', 'Authorization::login');
 
 
 $routes->get('/admin/products/edit/(:num)', 'ItemsInventory::form_edit/$1');
-$routes->post('/admin/products/update/(:num)', 'ItemsInventory::update/$1');
+$routes->post('/admin/products/edit/(:num)', 'ItemsInventory::update/$1');
 
 $routes->get('/admin/delete/(:num)', 'ItemsInventory::delete/$1');
 

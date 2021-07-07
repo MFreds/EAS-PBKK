@@ -110,28 +110,71 @@ class ItemsInventory extends BaseController
         echo view('admin/admin_inv_edit',$data);
     }
 
-    public function edit_img($id){
-        // dapatkan input file berupa array
-        $files = $this->request->getFiles();
- 
-        if($files){
-             
-            // ulangi insert gambar ke table galery menggunakan foreach
+    public function update($id)
+    {
+        $items = new Item();
+        //$data['items'] = $items->getFullItems_byId($id);
+        $img = $items->getImages_byId($id);
+        //echo $img['path'];
+        helper(['form']);
+        $files = $this->request->getFiles('file_upload');
+        if($files)
+        {
+            $img_lama = $img['path'];
+            if(file_exists("uploads/".$img_lama)){
+                unlink("uploads/".$img_lama);
+            }
             foreach($files['file_upload'] as $img){
                 $name=$img->getRandomName();
                 $data_uploads = [
                     'path' => $name
                 ];
- 
                 $img->move(ROOTPATH . 'public/uploads', $name);
-                $item_image->update($data_uploads);
-             
             }
-            session()->setFlashdata('success', 'Berhasil membuat items dengan '.count($files['file_upload']).' files');
-            return redirect()->to('admin/products/add');
-         
         }
+
+        $name = $this->request->getPost('product_name');
+        $category = $this->request->getPost('category');
+        $vendor = $this->request->getPost('vendor');
+        $description = $this->request->getPost('description');
+        $price = $this->request->getPost('price');
+        $stock = $this->request->getPost('stock');
+
+        $data=[
+            'product_name' => $name,
+            'category_id' => $category,
+            'vendor' => $vendor,
+            'price' => $price,
+            'stock' => $stock,
+            'description' => $description,
+        ];
+
+        $items->update($id, $data);
+        session()->setFlashdata('success', 'Berhasil mengupdate produk');
+        return redirect()->to('admin/products/');
     }
+
+    // public function edit_img($id){
+    //     // dapatkan input file berupa array
+    //     $files = $this->request->getFiles('file_upload');
+ 
+    //     if($files){
+    //         // ulangi insert gambar ke table galery menggunakan foreach
+    //         foreach($files['file_upload'] as $img){
+    //             $name=$img->getRandomName();
+    //             $data_uploads = [
+    //                 'path' => $name
+    //             ];
+ 
+    //             $img->move(ROOTPATH . 'public/uploads', $name);
+    //             $item_image->update($data_uploads);
+             
+    //         }
+    //         session()->setFlashdata('success', 'Berhasil mengupdate items dengan '.count($files['file_upload']).' files');
+    //         return redirect()->to('admin/products/');
+         
+    //     }
+    // }
 
     // public function update($id)
     // {
