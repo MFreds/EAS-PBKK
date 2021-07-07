@@ -45,8 +45,8 @@ $routes->get('/admin/products/', 'ItemsInventory::list_item');
 $routes->get('/admin/products/add', 'ItemsInventory::new_item');
 $routes->post('/admin/products/add', 'ItemsInventory::save');
 
-$routes->get('/admin/products/edit/(:num)', 'ItemsInventory::form_edit/$1');
-$routes->post('/admin/products/edit/(:num)', 'ItemsInventory::updateItem/$1');
+$routes->get('/admin/products/edit_item/(:num)', 'ItemsInventory::form_edit/$1');
+$routes->post('/admin/products/edit_item/(:num)', 'ItemsInventory::updateItem/$1');
 
 $routes->post('/admin/products/edit_image/(:num)', 'ItemsInventory::edit_img/$1');
 

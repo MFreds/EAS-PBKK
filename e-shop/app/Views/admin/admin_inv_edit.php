@@ -30,7 +30,7 @@
 
                         <?php } ?>
 
-                        <?= form_open_multipart(base_url('admin/products/edit/'.$item['i_id'])); ?>
+                        <?= form_open_multipart(base_url('admin/products/edit_item/'.$item['i_id'])); ?>
                         <div class="form-group">
                             <label for="">Product Name</label>
                             <input type="text" name="product_name" value="<?= $item['product_name'] ?>"
