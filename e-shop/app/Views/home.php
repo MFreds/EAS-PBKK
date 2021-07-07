@@ -10,7 +10,7 @@
 <main>
     <section class="container">
         <!-- Slider -->
-        <div class="fr-slider-wrap">
+        <!-- <div class="fr-slider-wrap">
             <div class="fr-slider">
                 <ul class="slides">
                     <li>
@@ -25,7 +25,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <!-- Popular Products -->
         <div class="fr-pop-wrap">
             <h3 class="component-ttl"><span>Popular products</span></h3>

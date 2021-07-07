@@ -35,19 +35,19 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/admin', 'Home::admin');
 $routes->get('/product/(:num)', 'Home::product/$1');
-$routes->get('/producttest/', 'Home::product1');
-$routes->get('/admin/products/', 'ItemsInventory::list_item');
-$routes->get('/admin/products/add', 'ItemsInventory::new_item');
-$routes->post('/admin/products/add', 'ItemsInventory::save');
+
 $routes->get('/auth', 'Authorization::index');
 $routes->post('/auth/register', 'Authorization::register');
 $routes->post('/auth/login', 'Authorization::login');
 
 
+$routes->get('/admin/products/', 'ItemsInventory::list_item');
+$routes->get('/admin/products/add', 'ItemsInventory::new_item');
+$routes->post('/admin/products/add', 'ItemsInventory::save');
 $routes->get('/admin/products/edit/(:num)', 'ItemsInventory::form_edit/$1');
 $routes->post('/admin/products/edit/(:num)', 'ItemsInventory::update/$1');
 
-$routes->post('/admin/products/edit/edit_image/(:num)', 'ItemsInventory::edit_img/$1');
+$routes->post('/admin/products/edit_image/(:num)', 'ItemsInventory::edit_img/$1');
 
 $routes->get('/admin/products/delete/(:num)', 'ItemsInventory::delete/$1');
 
