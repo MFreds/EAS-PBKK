@@ -70,31 +70,63 @@
 
 
                         <div class="form-group">
-                            <?= form_submit('Send', 'Send', ['class' => 'btn btn-primary']) ?>
+                            <?= form_submit('Send', 'Edit', ['class' => 'btn btn-primary']) ?>
                         </div>
 
                         <?= form_close() ?>
 
-                        <div class="form-group">
+                        
+                        <!-- <div class="form-group"> -->
                             <label for="">Foto Produk</label>
-                            <?php foreach ($img as $im) : ?>
-                            <?= form_open_multipart(base_url('admin/products/edit_image/'.$im['im_id'])); ?>
-                            <img src="<?php echo base_url('uploads/'.$im['path']) ?>" width="200" />
-                            <input type="file" name="file_upload" multiple>
-                            <div class="form-group">
-                                <?= form_submit('Edit', 'Send', ['class' => 'btn btn-primary']) ?>
-                            </div>
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                <?php $pertama=true ;?>
+                                <?php foreach ($img as $im) : ?>
+                                    <div class="carousel-item <?php if($pertama) echo "active" ;?>">
+                                        <div class="card">
+                                            <!-- <img class="card-img-top" src="holder.js/100x180/" alt=""> -->
+                                            <img class="card-img-top"
+                                                src="<?php echo base_url('uploads/'.$im['path']) ?>" alt="First slide">
+                                            <div class="card-body">
+                                            <?= form_open_multipart(base_url('admin/products/edit_image/'.$im['im_id'])); ?>
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <input type="file" name="file_upload" multiple>
+                                                <div class="form-group">
+                                                    <?= form_submit('Edit', 'Edit', ['class' => 'btn btn-primary']) ?>
+                                                </div>
+                                            </div>
 
-                            <?= form_close() ?>
-                            <?php endforeach ?>
+                                            <?= form_close() ?>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <?php $pertama=false; ;?>
+                                <?php endforeach ?>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        <!-- </div> -->
+
                         </div>
+
+
                     </div>
 
-
+                             
 
                 </div>
                 <!-- /.container-fluid -->
-
+                
                 <!-- Sticky Footer -->
                 <?php echo view("admin/_partials/footer.php") ?>
 

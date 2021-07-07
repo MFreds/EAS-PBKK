@@ -157,7 +157,7 @@ class ItemsInventory extends BaseController
             
             $item_image->update($id,$data_uploads);
             session()->setFlashdata('success', 'Berhasil mengupdate gambar');
-            return redirect()->to('/admin/products/edit/'.$data['item_id']);
+            return redirect()->to('/admin/products/edit_item/'.$data['item_id']);
          
         }
 
