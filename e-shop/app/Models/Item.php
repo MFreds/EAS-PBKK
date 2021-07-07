@@ -8,13 +8,13 @@ class Item extends Model
 {
 	protected $DBGroup              = 'default';
 	protected $table                = 'items';
-	protected $primaryKey           = 'item_id';
+	protected $primaryKey           = 'i_id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['item_id','product_name','vendor','description','stock','price','category_id'];
+	protected $allowedFields        = ['i_id','product_name','vendor','description','stock','price','category_id'];
 
 	// Dates
 	protected $useTimestamps        = true;

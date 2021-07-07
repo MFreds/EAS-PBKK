@@ -112,7 +112,7 @@ class ItemsInventory extends BaseController
         echo view('admin/admin_inv_edit',$data);
     }
 
-    public function update($id)
+    public function updateItem($id)
     {
         
         $name = $this->request->getPost('product_name');
@@ -267,16 +267,20 @@ class ItemsInventory extends BaseController
 
     public function delete($id)
     {
-        // $items = new Item();
-        // $data['item'] = $items->getFullItemsbyId($id);
+        $items = new Item();
+        $data['item'] = $items->getFullItemsbyId($id);
         // // print_r($data['items']);
         // // die();
-        // $data['img'] = $items->getAllImages($id);
-
-        // $hapus = $this->$items->delete_items($id);
-        echo "<pre>";
-        var_dump($this->request->getVar());
-        echo "</pre>";
+        $data['img'] = $items->getAllImages($id);
+        $item_image = new ItemImage();
+        foreach($data['img'] as $img){
+            if(file_exists("uploads/".$img['path'])){
+                    unlink("uploads/".$img['path']);
+                }
+            $item_image->delete($img['im_id']);
+        }
+        $items->delete($id);
+        return redirect()->to('admin/products')->with('berhasil', 'Data Berhasil di Delete');
     }
     
 }
