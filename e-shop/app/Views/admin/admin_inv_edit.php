@@ -62,15 +62,6 @@
                  <input type="textarea" name="description" value="<?= $item['description'] ?>" class="form-control"> 
              </div>
              
-              
-             <div class="form-group">
-             <label for="">Foto Produk</label>
-                    <?php foreach ($img as $im) : ?>
-                        <input type="file" name="file_upload[]" multiple>
-                        <img src="<?php echo base_url('uploads/'.$im['path']) ?>" width="200" />
-                        <a title="Edit" href="<?php echo base_url('/admin/products/edit/edit_image//'.$im['im_id']) ?>" class="btn btn-info">Edit</a>
-                    <?php endforeach ?>
-             </div>
 
              <div class="form-group">
                  <?= form_submit('Send', 'Send', ['class' => 'btn btn-primary']) ?>
@@ -78,6 +69,19 @@
 
              <?= form_close() ?>
 
+             
+             <div class="form-group">
+             <label for="">Foto Produk</label>
+                    <?php foreach ($img as $im) : ?>
+                        <?= form_open_multipart(base_url('admin/products/edit_image/'.$im['im_id'])); ?>
+                        <input type="file" name="file_upload[]" multiple>
+                        <img src="<?php echo base_url('uploads/'.$im['path']) ?>" width="200" />
+                        <div class="form-group">
+                            <?= form_submit('Send', 'Edit', ['class' => 'btn btn-primary']) ?>
+                         </div>
+                        <?= form_close() ?>
+                    <?php endforeach ?>
+             </div>
          </div> 
 
 		

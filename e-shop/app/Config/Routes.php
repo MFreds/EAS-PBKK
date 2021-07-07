@@ -49,7 +49,7 @@ $routes->post('/admin/products/edit/(:num)', 'ItemsInventory::update/$1');
 
 $routes->post('/admin/products/edit/edit_image/(:num)', 'ItemsInventory::edit_img/$1');
 
-$routes->delete('/admin/delete/(:num)', 'ItemsInventory::delete/$1');
+$routes->get('/admin/products/delete/(:num)', 'ItemsInventory::delete/$1');
 
 
 $routes->get('/api/test', 'API::index');

@@ -156,7 +156,7 @@ class ItemsInventory extends BaseController
                 ];
                 $img->move(ROOTPATH . 'public/uploads', $name);
             }
-            return redirect()->to('/admin/products/edit/'.$items['i_id']);
+            return redirect()->to('admin/products/edit/'.$items['i_id']);
         }
     }
 
@@ -241,5 +241,18 @@ class ItemsInventory extends BaseController
         
     // }
 
+    public function delete($id)
+    {
+        // $items = new Item();
+        // $data['item'] = $items->getFullItemsbyId($id);
+        // // print_r($data['items']);
+        // // die();
+        // $data['img'] = $items->getAllImages($id);
+
+        // $hapus = $this->$items->delete_items($id);
+        echo "<pre>";
+        var_dump($this->request->getVar());
+        echo "</pre>";
+    }
     
 }
