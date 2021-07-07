@@ -59,15 +59,16 @@
              </div>
              <div class="form-group">
                  <label for="">Description</label>
-                 <input type="text" name="description" value="<?= $item['description'] ?>" placeholder="Enter Product Description" class="form-control"> 
+                 <input type="textarea" name="description" value="<?= $item['description'] ?>" class="form-control"> 
              </div>
              
               
              <div class="form-group">
              <label for="">Foto Produk</label>
-             <input type="file" name="file_upload[]" class="form-control" multiple>
                     <?php foreach ($img as $im) : ?>
+                        <input type="file" name="file_upload[]" multiple>
                         <img src="<?php echo base_url('uploads/'.$im['path']) ?>" width="200" />
+                        <a title="Edit" href="" class="btn btn-info">Edit</a>
                     <?php endforeach ?>
              </div>
 
