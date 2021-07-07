@@ -103,7 +103,9 @@ class ItemsInventory extends BaseController
         //$item_edit = new ItemEdit();
         $cat = new Category();
         $data['categories'] = $cat->findAll();
-        $data['items'] = $items->getFullItems_byId($id);
+        $data['item'] = $items->getFullItemsbyId($id);
+        // print_r($data['items']);
+        // die();
         $data['img'] = $items->getAllImages($id);
         //$data['items'] = $items->PilihItem($id)->getRow();
         helper('form');

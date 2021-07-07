@@ -9,16 +9,16 @@
 
     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700ii%7CRoboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/ion.rangeSlider.css">
-    <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css">
-    <link rel="stylesheet" href="css/jquery.bxslider.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="css/swiper.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="<?php echo base_url('css/font-awesome.min.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/ion.rangeSlider.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/ion.rangeSlider.skinFlat.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/jquery.bxslider.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/flexslider.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/swiper.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/style.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/media.css')?>">
 
 </head>
 <body>
@@ -28,18 +28,18 @@
     <div class="header-middle">
         <div class="container header-middle-cont">
             <div class="toplogo">
-                <a href="index.html">
-                    <img src="img/logo.png" alt="AllStore - MultiConcept eCommerce Template">
+                <a href="<?php echo base_url('/')?>">
+                    <img src="<?php echo base_url('img/logo.png')?>" alt="AllStore - MultiConcept eCommerce Template">
                 </a>
             </div>
             <div class="shop-menu">
                 <ul>
                     <li class="topauth">
-                        <a href="/auth">
+                        <a href="<?php echo base_url('/auth')?>">
                             <i class="fa fa-lock"></i>
                             <span class="shop-menu-ttl">Registration</span>
                         </a>
-                        <a href="/auth">
+                        <a href="<?php echo base_url('/auth')?>">
                             <span class="shop-menu-ttl">Login</span>
                         </a>
                     </li>
@@ -64,7 +64,7 @@
             <nav class="topmenu">
                 <!-- Catalog menu - start -->
                 <div class="topcatalog">
-                    <a class="topcatalog-btn" href="catalog-list.html"><span>All</span> catalog</a>
+                    <a class="topcatalog-btn" href="<?php echo base_url('catalog')?>"><span>All</span> catalog</a>
                     <?php 
                         $cat= new App\Models\Category();
                         $cats = $cat->findAll();
@@ -72,7 +72,7 @@
                     <ul class="topcatalog-list">
                         <?php foreach ($cats as $c) : ?>
                             <li>
-                                <a href="catalog-list.html">
+                                <a href="<?php echo base_url('catalog')?>">
                                     <?= $c['category'] ?>
                                 </a>
                             </li>
@@ -86,7 +86,7 @@
                 <button type="button" class="mainmenu-btn">Menu</button>
                 <ul class="mainmenu">
                     <li>
-                        <a href="index.html" class="active">
+                        <a href="<?php echo base_url('/')?>" class="active">
                             Home
                         </a>
                     </li>
@@ -132,8 +132,8 @@
         <div class="container">
             <div class="row">
                 <div class="companyinfo">
-                    <a href="index.html">
-                        <img src="img/logo-b.png" alt="AllStore - MultiConcept eCommerce Responsive HTML5 Template">
+                    <a href="<?php echo base_url('/')?>">
+                        <img src="<?php echo base_url('img/logo-b.png')?>" alt="AllStore - MultiConcept eCommerce Responsive HTML5 Template">
                         eShopppu - Your trusted partner
                     </a>
                 </div>
@@ -159,7 +159,7 @@
                     </div>
                 </div>
                 <div class="f-delivery">
-                    <img src="img/map.png" alt="">
+                    <img src="<?php echo base_url('img/map.png') ?>" alt="">
                     <h4>Free delivery in London</h4>
                     <p>We will deliver within 1 hour</p>
                 </div>
@@ -174,21 +174,9 @@
                     About us
                 </h3>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="catalog-list.html">Catalog</a></li>
-                    <li><a href="contacts.html">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="f-menu">
-                <h3>
-                    Shop
-                </h3>
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="catalog-list.html">Women</a></li>
-                    <li><a href="catalog-list.html">Men</a></li>
-                    <li><a href="catalog-list.html">Kids</a></li>
-                    <li><a href="catalog-list.html">Shoes</a></li>
-                    <li><a href="catalog-list.html">Accessories</a></li>
+                    <li class="active"><a href="<?php echo base_url('/')?>">Home</a></li>
+                    <li><a href="<?php echo base_url('catalog')?>">Catalog</a></li>
+                    <!-- <li><a href="contacts.html">Contacts</a></li> -->
                 </ul>
             </div>
         </div>
@@ -205,7 +193,7 @@
                     </li>
                     <li>
                         <a href="http://google.com/" rel="nofollow" target="_blank">
-                            <i class="fa fa-google-plus"></i>
+                            <i class="fa fa-google-plus') ?>"></i>
                         </a>
                     </li>
                     <li>
@@ -236,21 +224,22 @@
 
 
 <!-- jQuery plugins/scripts - start -->
-<script src="js/jquery-1.11.2.min.js"></script>
-<script src="js/jquery.bxslider.min.js"></script>
-<script src="js/fancybox/fancybox.js"></script>
-<script src="js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
-<script src="js/jquery.flexslider-min.js"></script>
-<script src="js/swiper.jquery.min.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/progressbar.min.js"></script>
-<script src="js/ion.rangeSlider.min.js"></script>
-<script src="js/chosen.jquery.min.js"></script>
-<script src="js/jQuery.Brazzers-Carousel.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+
+<script src="<?php echo base_url('js/jquery-1.11.2.min.js') ?>"></script>
+<script src="<?php echo base_url('js/jquery.bxslider.min.js') ?>"></script>
+<script src="<?php echo base_url('js/fancybox/fancybox.js') ?>"></script>
+<script src="<?php echo base_url('js/fancybox/helpers/jquery.fancybox-thumbs.js') ?>"></script>
+<script src="<?php echo base_url('js/jquery.flexslider-min.js') ?>"></script>
+<script src="<?php echo base_url('js/swiper.jquery.min.js') ?>"></script>
+<script src="<?php echo base_url('js/jquery.waypoints.min.js') ?>"></script>
+<script src="<?php echo base_url('js/progressbar.min.js') ?>"></script>
+<script src="<?php echo base_url('js/ion.rangeSlider.min.js') ?>"></script>
+<script src="<?php echo base_url('js/chosen.jquery.min.js') ?>"></script>
+<script src="<?php echo base_url('js/jQuery.Brazzers-Carousel.js') ?>"></script>
+<script src="<?php echo base_url('js/plugins.js') ?>"></script>
+<script src="<?php echo base_url('js/main.js') ?>"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhAYvx0GmLyN5hlf6Uv_e9pPvUT3YpozE"></script>
-<script src="js/gmap.js"></script>
+<script src="<?php echo base_url('js/gmap.js') ?>"></script>
 <!-- jQuery plugins/scripts - end -->
 
 </body>
