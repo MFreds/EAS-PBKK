@@ -22,4 +22,17 @@ class Home extends BaseController
 	{
 		return view('admin/overview');
 	}
+	public function product($id=0)
+	{
+		$item= new Item();
+        $data['items'] = $item->getFullItemsbyId();
+		echo view('product',$data);
+	}
+	public function product1()
+	{
+		$item= new Item();
+        $data['item'] = $item->getFullItemsbyId(11);
+		$data['images'] = $item->getAllImages(11);
+		echo view('product',$data);
+	}
 }

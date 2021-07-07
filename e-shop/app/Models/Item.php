@@ -47,7 +47,7 @@ class Item extends Model
 				->groupBy('items.i_id')
 				->get()->getResultArray();
 	}
-	public function getFullItems_byId($id){
+	public function getFullItemsbyId($id){
 		return $this->db->table('items')
 				-> join('categories as c','c.c_id=items.category_id')
 				->where('items.i_id',$id)
@@ -55,7 +55,7 @@ class Item extends Model
 	}
 	public function getFewItems($limit,$order){
 		return $this->db->table('items')
-				-> join('categories as c','c._id=items.category_id')
+				-> join('categories as c','c.c_id=items.category_id')
 				-> join('item_images as im','im.item_id=items.i_id')
 				->groupBy('items.i_id')->orderBy("items.i_id",$order)
 				->limit($limit)->get()->getResultArray();

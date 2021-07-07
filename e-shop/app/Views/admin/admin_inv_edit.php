@@ -28,17 +28,17 @@
               
              <?php } ?>
 
-             <?= form_open_multipart(base_url('admin/products/edit/'.$items['i_id'])); ?>
+             <?= form_open_multipart(base_url('admin/products/add')); ?>
              <div class="form-group">
                  <label for="">Product Name</label>
-                 <input type="text" name="product_name" class="form-control" value="<?php echo $items['product_name']; ?>"> 
+                 <input type="text" name="product_name" value="<?= $item['product_name'] ?>" placeholder="Enter Product Name" class="form-control"> 
              </div>
             <div class="form-group">
                 <label for="">Category</label>
                 <select class="custom-select" name="category" id="">
                     <option>Choose category</option>
                     <?php foreach ($categories as $c) : ?>
-                        <option <?php if ($c['c_id'] == $items['c_id'] )
+                        <option <?php if ($c['c_id'] == $item['c_id'] )
                             echo "selected" ?>
                         value="<?= $c['c_id'] ?>"><?= $c['category'] ?></option>
                     <?php endforeach ?>
@@ -47,19 +47,19 @@
              
              <div class="form-group">
                  <label for="">Vendor</label>
-                 <input type="text" name="vendor" class="form-control" value="<?php echo $items['vendor']; ?>"> 
+                 <input type="text" name="vendor" value="<?= $item['vendor'] ?>" placeholder="Enter Vendor Name" class="form-control"> 
              </div>
              <div class="form-group">
                  <label for="">Price</label>
-                 <input type="text" name="price" class="form-control" value="<?php echo $items['price']; ?>"> 
+                 <input type="text" name="price" class="form-control" value="<?php echo $item['price']; ?>"> 
              </div>
              <div class="form-group">
                  <label for="">Stock</label>
-                 <input type="number" name="stock" class="form-control" value="<?php echo $items['stock']; ?>"> 
+                 <input type="number" name="stock" class="form-control" value="<?php echo $item['stock']; ?>"> 
              </div>
              <div class="form-group">
                  <label for="">Description</label>
-                 <input type="text" name="description" class="form-control" value="<?php echo $items['description']; ?>"> 
+                 <input type="text" name="description" value="<?= $item['description'] ?>" placeholder="Enter Product Description" class="form-control"> 
              </div>
              
               
@@ -97,6 +97,17 @@
 <?php echo view("admin/_partials/scrolltop.php") ?>
 <?php echo view("admin/_partials/modal.php") ?>
 <?php echo view("admin/_partials/js.php") ?>
-    
+
+<script>
+    $(function(){
+    $("input[type = 'submit']").click(function(){
+        var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length) > 3){
+            alert("You are only allowed to upload a maximum of 3 files");
+        }
+    });
+    });
+</script>
 </body>
 </html>
+
