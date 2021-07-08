@@ -27,7 +27,13 @@
                         <tr>
                             <td scope="row"><?= $trx['name'] ?></td>
                             <td><?= $trx['sum'] ?></td>
-                            <td><?= $trx['status'] ?></td>
+                            <td>
+                            <?php if ($trx['status'] == 1) : ?>
+                                <?= "Unpaid" ;?>
+                            <?php else : ?>
+                                <?= "Paid" ;?>
+                            <?php endif ?>
+                            </td>
                         </tr>
                     <?php endforeach ?>
                         

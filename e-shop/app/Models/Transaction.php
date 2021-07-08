@@ -69,4 +69,33 @@ class Transaction extends Model
 				-> join('users as u','u.u_id=t.user_id')
 				->get()->getResultArray();
 	}
+
+	public function getItemNumber($t_id){
+		
+		$count= $res=$this->db->table('carts as c')
+		-> join('items as i','c.item_id=i.i_id')->where('c.transaction_id', $t_id)->countAllResults();
+
+		return count();
+	}
+
+	public function getQuantityCount($t_id){
+		
+		$count= $res=$this->db->table('carts as c')
+		-> join('items as i','c.item_id=i.i_id')->where('c.transaction_id', $t_id)->countAllResults();
+		
+		$arr = $this->db->table('carts as c')
+		-> join('items as i','c.item_id=i.i_id')
+		->where('c.transaction_id',$trans['t_id'])
+		->get()->getResultArray();
+
+		$sum = 0;
+
+		foreach ($arr as $ar){
+			$sum = $sum+$ar['quantity'];
+		}
+
+		if($count<1) return 0;
+		else 
+			return $sum;
+	}
 }
