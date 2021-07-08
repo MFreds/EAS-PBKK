@@ -41,7 +41,7 @@ $routes->post('/auth/register', 'Authorization::register');
 $routes->post('/auth/login', 'Authorization::login');
 
 $routes->post('/add/(:num)', 'TransactionHandler::addToCart/$1');
-$routes->post('/remove/(:num)', 'TransactionHandler::removeFromCart/$1');
+$routes->get('/remove/(:num)', 'TransactionHandler::removeFromCart/$1');
 $routes->get('/cart', 'Home::carts');
 
 $routes->get('/admin/products/', 'ItemsInventory::list_item');
