@@ -27,6 +27,7 @@ class Home extends BaseController
 		$item= new Item();
         $data['item'] = $item->getFullItemsbyId($id);
 		$data['images'] = $item->getAllImages($id);
+		helper('form');
 		echo view('product',$data);
 	}
 	public function product1()

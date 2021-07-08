@@ -8,16 +8,16 @@ class Cart extends Model
 {
 	protected $DBGroup              = 'default';
 	protected $table                = 'carts';
-	protected $primaryKey           = 'id';
+	protected $primaryKey           = 'crt_id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['crt_id','item_id','transaction_id','quantity'];
 
 	// Dates
-	protected $useTimestamps        = false;
+	protected $useTimestamps        = true;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';

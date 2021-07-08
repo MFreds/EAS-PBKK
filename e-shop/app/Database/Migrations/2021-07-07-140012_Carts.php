@@ -26,10 +26,6 @@ class Carts extends Migration
 				'type'			=> 'INT',
 				'unsigned'		=> true,
 			],
-			'status'	=>[
-				'type'			=> 'INT',
-				'unsigned'		=> true,
-			],
 			'created_at'	=>[
 				'type'			=> 'DATETIME',
 			],

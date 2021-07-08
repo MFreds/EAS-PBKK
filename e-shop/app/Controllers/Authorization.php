@@ -52,6 +52,7 @@ class Authorization extends BaseController
             if (password_verify($password, $dataUser['password'])) {
                 
                 $ses_data=[
+                    'id' => $dataUser['u_id'],
                     'email' => $dataUser['email'],
                     'logged_in' => TRUE,
                     'role'  => $dataUser['role']

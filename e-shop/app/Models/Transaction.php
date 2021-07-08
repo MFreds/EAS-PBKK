@@ -14,10 +14,10 @@ class Transaction extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['t_id','user_id','status'];
 
 	// Dates
-	protected $useTimestamps        = false;
+	protected $useTimestamps        = true;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
@@ -39,4 +39,13 @@ class Transaction extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
+
+	public function getActiveTransaction($id){
+		return $this->db->table('transactions as t')
+				-> join('users as u','u.u_id=t.user_id')
+				->where('u.u_id',$id)
+				->where('t.status',T_ACTIVE)
+				->get()->getLastRow('array');
+	}
+
 }

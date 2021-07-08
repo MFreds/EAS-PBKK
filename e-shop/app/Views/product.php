@@ -73,14 +73,17 @@
                         <p class="prod-price">
                             <b class="item_current_price">Rp. <?= $item['price'] ;?></b>
                         </p>
+                        <?= form_open_multipart(base_url('add/'.$item['i_id'])); ?>
                         <p class="prod-qnt">
-                            <input value="1" type="text">
-                            <a href="#" class="prod-plus"><i class="fa fa-angle-up"></i></a>
-                            <a href="#" class="prod-minus"><i class="fa fa-angle-down"></i></a>
+                            
+                            <input name="qtt" id="prod" value="1" type="text">
+                            <a href="#" onclick="plus()" class="prod-plus"><i class="fa fa-angle-up"></i></a>
+                            <a href="#" onclick="minus()" class="prod-minus"><i class="fa fa-angle-down"></i></a>
                         </p>
                         <p class="prod-addwrap">
-                            <a href="#" class="prod-add" rel="nofollow">Add to cart</a>
+                            <?= form_submit('Send', 'Add to cart', ['class' => 'prod-add']) ?>
                         </p>
+                        <?= form_close() ?>
                     </div>
 
                     <!-- <ul class="prod-i-props">
@@ -192,7 +195,7 @@
                                     </form>
                                 </div> -->
                             </div>
-                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -204,5 +207,25 @@
 
     </section>
 </main>
+
 <!-- Main Content - end -->
+<?= $this->endSection() ?>
+<?= $this->section('scripts') ;?>
+<script>
+
+var countEl = document.getElementById("prod");
+function plus(){
+    var count =countEl.value
+    count++;
+    countEl.value = count;
+}
+function minus(){
+    var count =countEl.value
+    if (count > 1) {
+    count--;
+    countEl.value = count;
+    }  
+}
+</script>
+
 <?= $this->endSection() ?>

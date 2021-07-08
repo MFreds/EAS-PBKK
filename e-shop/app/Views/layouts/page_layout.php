@@ -224,7 +224,7 @@
 
 
 <!-- jQuery plugins/scripts - start -->
-
+<?= $this->renderSection('scripts') ?>
 <script src="<?php echo base_url('js/jquery-1.11.2.min.js') ?>"></script>
 <script src="<?php echo base_url('js/jquery.bxslider.min.js') ?>"></script>
 <script src="<?php echo base_url('js/fancybox/fancybox.js') ?>"></script>

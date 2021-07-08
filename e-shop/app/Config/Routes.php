@@ -40,6 +40,7 @@ $routes->get('/auth', 'Authorization::index');
 $routes->post('/auth/register', 'Authorization::register');
 $routes->post('/auth/login', 'Authorization::login');
 
+$routes->post('/add/(:num)', 'TransactionHandler::addToCart/$1');
 
 $routes->get('/admin/products/', 'ItemsInventory::list_item');
 $routes->get('/admin/products/add', 'ItemsInventory::new_item');
