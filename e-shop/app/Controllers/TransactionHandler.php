@@ -54,8 +54,8 @@ class TransactionHandler extends BaseController
 		$cart=$this->cart->where($cart_data)->first();
 		$cart_data['quantity']=$quantity;
 		if(empty($cart)){
-			print_r();
-			die();
+			// print_r();
+			// die();
 			$this->cart->save($cart_data);
 		}else{
 
