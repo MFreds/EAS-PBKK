@@ -65,6 +65,9 @@
                         <label for="reg_email">Email <span class="required">*</span></label><input name="email" type="email" id="reg_email">
                     </p>
                     <p>
+                        <label for="reg_name">Name <span class="required">*</span></label><input name="name" type="text" id="reg_name">
+                    </p>
+                    <p>
                         <label for="reg_password">Password <span class="required">*</span></label><input name="password" type="password" id="reg_password">
                     </p>
                     <?php if (!empty(session()->getFlashdata('error_reg'))) : ?>

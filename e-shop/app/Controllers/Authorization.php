@@ -35,6 +35,7 @@ class Authorization extends BaseController
         helper(['form']);
 		$rules = [
             'email'         => 'required|min_length[4]|max_length[50]|valid_email|is_unique[this->user.email]',
+            'name'         => 'required|min_length[4]|max_length[50]',
             'password'      => 'required|min_length[8]|max_length[50]',
         ];
         if (!$this->validate($rules)) {
@@ -45,6 +46,7 @@ class Authorization extends BaseController
         }
         $data=[
             'email' => $this->request->getVar('email'),
+            'name' => $this->request->getVar('name'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
         ];
         $this->user->save($data);

@@ -40,8 +40,9 @@ class ItemsInventory extends BaseController
         $item= new Item();
 		$keranjang= new Cart();
         $transaksi= new Transaction();
+        $data['transactions']= $transaksi->getAllTransaction();
 
-		echo view('admin/admin_inv_invoice');
+		echo view('admin/admin_inv_invoice',$data);
 	}
 
 	public function save()

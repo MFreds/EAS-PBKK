@@ -11,16 +11,19 @@ class Users extends Seeder
 		$data = [
             [
                 'email'  => '1@admin.com',
+                'name'  => 'admin',
                 'password'  =>  password_hash('qwertyqaz', PASSWORD_BCRYPT),
 				'role'	=> ROLE_ADMIN
             ],
             [
                 'email'  => '1@user.com',
+                'name'  => 'maman',
                 'password'  =>  password_hash('12341234', PASSWORD_BCRYPT),
 				'role'	=> ROLE_CUSTOMER
             ],
 			[
                 'email'  => '2@user.com',
+                'name'  => 'edd',
                 'password'  =>  password_hash('56785678', PASSWORD_BCRYPT),
 				'role'	=> ROLE_CUSTOMER
             ]
