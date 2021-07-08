@@ -67,5 +67,53 @@ class TransactionHandler extends BaseController
 		$this->cart->update($cart['crt_id'],$cart_data);
 		return redirect()->back();
 	}
-	
+	public function clearCart()
+	{
+		// print_r($i_id);die();
+		$u_id=session()->get('id');
+		$trans=session()->get('transaction');
+		$cart_data=[
+			'transaction_id' => $trans['t_id'],
+		];
+		$carts=$this->cart->where($cart_data)->get()->getResultArray();
+		$cart_data['quantity']=1;
+		$cart_data['isdeleted']=C_DELETED;
+		foreach ($carts as $c) {
+			# code...
+			$this->cart->update($c['crt_id'],$cart_data);
+		}
+		
+		return redirect()->to('/cart');
+	}
+	public function checkoutCart()
+	{
+
+		$u_id=session()->get('id');
+		$trans=session()->get('transaction');
+		$cart_data=[
+			'transaction_id' => $trans['t_id'],
+		];
+		$carts=$this->transaction->getActiveTransactionCarts();
+		$cart_data['isdeleted']=2;
+		$sum=0;
+		foreach ($carts as $c) {
+			$sum=$sum+($c['quantity']*$c['price']);
+			$item_data=[
+				'stock'=>$c['stock']-$c['quantity']
+			];
+			if($item_data['stock']<0){
+				return redirect()->to('/cart');
+			}
+			$this->item->update($c['i_id'],$item_data);
+			$this->cart->update($c['crt_id'],$cart_data);
+		}
+		$trans_data=[
+			'transaction_id' => T_CHECKOUT,
+			'sum'	=> $sum
+		];
+		$this->transaction->update($trans['t_id'],$trans_data);
+
+		
+		return redirect()->to('/cart');
+	}
 }

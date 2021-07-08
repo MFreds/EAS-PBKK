@@ -8,7 +8,7 @@ class Transaction extends Model
 {
 	protected $DBGroup              = 'default';
 	protected $table                = 'transactions';
-	protected $primaryKey           = 'id';
+	protected $primaryKey           = 't_id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
