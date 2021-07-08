@@ -35,7 +35,7 @@
                             <td class="cart-price">Price</td>
                             <td class="cart-quantity">Quantity</td>
                             <td class="cart-summ">Total</td>
-                            <td ></td>
+                            <td class="cart-del">Total</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,10 +64,14 @@
                             <td class="cart-summ">
                                 <b>Rp <?= $c['quantity']*$c['price'] ;?></b>
                             </td>
-                            <td>
-                            <?= form_open_multipart(base_url('add/'.$c['i_id'])); ?>
-                                <?= form_submit('Send', 'Update cart') ?>
+                            <!-- <td>
+                            <?= form_open_multipart(base_url('remove/'.$c['i_id'])); ?>
+                                <button type="submit">Submit</button>
                             <?= form_close() ?>
+                          
+                            </td> -->
+                            <td class="cart-del">
+                            <a href="<?= base_url('remove/'.$c['i_id']) ;?>" class="cart-remove"></a>
                             </td>
                         </tr>
                         <?php endforeach ?>

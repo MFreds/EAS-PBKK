@@ -24,22 +24,8 @@ class TransactionHandler extends BaseController
 		$this->cart = new Cart();
 		$this->item = new Item();
     }
-	public function removeFromCart($i_id)
-	{
-		print_r($i_id);die();
-		$u_id=session()->get('id');
-		$trans=session()->get('transaction');
-		$cart_data=[
-			'transaction_id' => $trans['t_id'],
-			'item_id' => $i_id,
-		];
-		
-		$cart=$this->cart->where($cart_data)->first();
-		$cart_data['quantity']=1;
-		$cart_data['isdeleted']=C_DELETED;
-		$this->cart->update($cart['crt_id'],$cart_data);
-		return redirect()->back();
-	}
+
+	
 	public function addToCart($i_id)
 	{
 		
@@ -54,8 +40,6 @@ class TransactionHandler extends BaseController
 		$cart=$this->cart->where($cart_data)->first();
 		$cart_data['quantity']=$quantity;
 		if(empty($cart)){
-			// print_r();
-			// die();
 			$this->cart->save($cart_data);
 		}else{
 
@@ -66,6 +50,22 @@ class TransactionHandler extends BaseController
 		}
 		return redirect()->back();
 
+	}
+	public function removeFromCart($i_id)
+	{
+		// print_r($i_id);die();
+		$u_id=session()->get('id');
+		$trans=session()->get('transaction');
+		$cart_data=[
+			'transaction_id' => $trans['t_id'],
+			'item_id' => $i_id,
+		];
+		
+		$cart=$this->cart->where($cart_data)->first();
+		$cart_data['quantity']=1;
+		$cart_data['isdeleted']=C_DELETED;
+		$this->cart->update($cart['crt_id'],$cart_data);
+		return redirect()->back();
 	}
 	
 }
