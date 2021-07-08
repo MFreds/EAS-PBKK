@@ -35,6 +35,15 @@ class ItemsInventory extends BaseController
 		echo view('admin/admin_inv_list',$data);
 	}
 
+    public function invoice_list()
+	{
+        $item= new Item();
+		$keranjang= new Cart();
+        $transaksi= new Transaction();
+
+		echo view('admin/admin_inv_invoice');
+	}
+
 	public function save()
     {
         $name = $this->request->getPost('product_name');

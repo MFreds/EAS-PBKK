@@ -55,6 +55,7 @@ $routes->post('/admin/products/edit_image/(:num)', 'ItemsInventory::edit_img/$1'
 
 $routes->get('/admin/products/delete/(:num)', 'ItemsInventory::delete/$1');
 
+$routes->get('/admin/invoice/', 'ItemsInventory::invoice_list');
 
 $routes->get('/api/test', 'API::index');
 /*

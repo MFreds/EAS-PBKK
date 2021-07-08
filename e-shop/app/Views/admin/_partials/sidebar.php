@@ -18,9 +18,9 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Users</span></a>
+        <a class="nav-link" href="<?php echo site_url('admin/invoice') ?>">
+            <i class="fas fa-fw fa-shopping-cart"></i>
+            <span>Invoice</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">

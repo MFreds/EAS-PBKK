@@ -64,4 +64,9 @@ class Transaction extends Model
 					->get()->getResultArray();
 	}
 
+	public function getAllTransaction(){
+		return $this->db->table('transactions as t')
+				-> join('users as u','u.u_id=t.user_id')
+				->get()->getResultArray();
+	}
 }
