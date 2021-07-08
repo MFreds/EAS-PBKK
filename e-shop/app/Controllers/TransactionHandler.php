@@ -48,7 +48,7 @@ class TransactionHandler extends BaseController
 			}
 			$this->cart->update($cart['crt_id'],$cart_data);
 		}
-		return redirect()->back();
+		return redirect()->to(base_url('product/'.$i_id));
 
 	}
 	public function removeFromCart($i_id)
@@ -65,7 +65,8 @@ class TransactionHandler extends BaseController
 		$cart_data['quantity']=1;
 		$cart_data['isdeleted']=C_DELETED;
 		$this->cart->update($cart['crt_id'],$cart_data);
-		return redirect()->back();
+		return redirect()->to(base_url('cart'));
+
 	}
 	public function clearCart()
 	{
@@ -83,7 +84,7 @@ class TransactionHandler extends BaseController
 			$this->cart->update($c['crt_id'],$cart_data);
 		}
 		
-		return redirect()->to('/cart');
+		return redirect()->to(base_url('cart'));
 	}
 	public function checkoutCart()
 	{
@@ -108,12 +109,21 @@ class TransactionHandler extends BaseController
 			$this->cart->update($c['crt_id'],$cart_data);
 		}
 		$trans_data=[
-			'transaction_id' => T_CHECKOUT,
+			'status' => T_CHECKOUT,
 			'sum'	=> $sum
 		];
 		$this->transaction->update($trans['t_id'],$trans_data);
+		$new_trans=[
+			'user_id' => $u_id,
+			'status' => T_ACTIVE,
+		];
 
-		
-		return redirect()->to('/cart');
+		$this->transaction->save($new_trans);
+		$last=$this->transaction->getActiveTransaction($u_id);
+		$ses_data=[
+			'transaction' => $last
+		];
+		session()->set($ses_data);
+		return redirect()->to(base_url('cart'));
 	}
 }
