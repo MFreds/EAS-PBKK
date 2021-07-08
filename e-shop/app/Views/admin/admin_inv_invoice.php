@@ -18,21 +18,16 @@
                 <thead class="thead-inverse">
                     <tr>
                         <th>User Names</th>
-                        <th>Product Name</th>
-                        <th>Total Item</th>
                         <th>Price</th>
                         <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($items as $item) : ?>
+                    <?php foreach ($transactions as $trx) : ?>
                         <tr>
-                            <td scope="row"><?= $item['product_name'] ?></td>
-                            <td><?= $item['vendor'] ?></td>
-                            <td><?= $item['category_id'] ?></td>
-                            <td><?= $item['price'] ?></td>
-                            <td><?= $item['stock'] ?></td>
-                            <td><?= $item['description'] ?></td>
+                            <td scope="row"><?= $trx['name'] ?></td>
+                            <td><?= $trx['sum'] ?></td>
+                            <td><?= $trx['status'] ?></td>
                         </tr>
                     <?php endforeach ?>
                         

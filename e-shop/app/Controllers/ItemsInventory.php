@@ -7,13 +7,17 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\ItemImage;
 use App\Models\ItemEdit;
+use App\Models\Transaction;
+
 class ItemsInventory extends BaseController
 {
     protected $items;
+    protected $transaksi;
  
     function __construct()
     {
         $this->items = new Item();
+        $this->transaksi = new Transaction();
     }
 
 	public function new_item()
@@ -37,11 +41,7 @@ class ItemsInventory extends BaseController
 
     public function invoice_list()
 	{
-        $item= new Item();
-		$keranjang= new Cart();
-        $transaksi= new Transaction();
-        $data['transactions']= $transaksi->getAllTransaction();
-
+        $data['transactions']= $this->transaksi->getAllTransaction();
 		echo view('admin/admin_inv_invoice',$data);
 	}
 
