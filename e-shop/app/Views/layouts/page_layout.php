@@ -45,10 +45,9 @@
                     </li>
                     <li>
                         <div class="h-cart">
-                            <a href="cart.html">
+                            <a href="<?php echo base_url('/cart')?>">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="shop-menu-ttl">Cart</span>
-                                (<b>0</b>)
                             </a>
                         </div>
                     </li>

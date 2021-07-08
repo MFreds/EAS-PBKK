@@ -53,17 +53,11 @@
                                 </p>
                             </div>
                             <h3>
-                                <a href="product.html"><?= $item['product_name'] ?></a>
+                                <a href="<?php echo base_url('product/'.$item['i_id'])?>"><?= $item['product_name'] ?></a>
                             </h3>
                             <p class="prod-i-price">
-                                <b>$90</b>
+                                <b>Rp <?= $item['price'] ;?></b>
                             </p>
-                            <div class="prod-i-skuwrapcolor">
-                                <ul class="prod-i-skucolor">
-                                    <li class="bx_active"><img src="img/color/red.jpg" alt="Red"></li>
-                                    <li><img src="img/color/blue.jpg" alt="Blue"></li>
-                                </ul>
-                            </div>
                         </li>
                         <?php endforeach ?>
                         
