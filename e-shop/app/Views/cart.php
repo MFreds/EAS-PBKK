@@ -85,8 +85,8 @@
                 <li class="cart-summ">TOTAL: <b>Rp <?= $sum ;?></b></li>
             </ul>
             <div class="cart-submit">
-                <a href="#" class="cart-submit-btn">Checkout</a>
-                <a href="#" class="cart-clear">Clear cart</a>
+                <a href="<?= base_url('checkout/') ;?>" class="cart-submit-btn">Checkout</a>
+                <a href="<?= base_url('clear/') ;?>" class="cart-clear">Clear cart</a>
             </div>
         </form>
         <!-- Cart Items - end -->
