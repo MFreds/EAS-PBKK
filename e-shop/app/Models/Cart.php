@@ -14,7 +14,7 @@ class Cart extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['crt_id','item_id','transaction_id','quantity'];
+	protected $allowedFields        = ['crt_id','item_id','transaction_id','quantity','isdeleted'];
 
 	// Dates
 	protected $useTimestamps        = true;
@@ -39,4 +39,14 @@ class Cart extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
+	
+	public function getUserCart($item_id){
+		
+		$trans=session()->get('transaction');
+		return $this->db->table('carts as c')
+				->where('c.transaction_id',$trans['t_id'])
+				->where('c.item_id',$item_id)
+				->where('c.isdeleted',C_ACTIVE)
+				->get()->getRowArray();
+	}
 }

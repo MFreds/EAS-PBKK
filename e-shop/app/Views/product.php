@@ -17,7 +17,7 @@
                 <a href="<?php echo base_url('catalog')?>"">Catalog</a>
             </li>
             <li>
-                <a href="<?php echo base_url('catalog')?>"><?= $item['category'] ;?></a>
+                <a href=" <?php echo base_url('catalog')?>"><?= $item['category'] ;?></a>
             </li>
             <li>
                 <span><?= $item['product_name'] ;?></span>
@@ -32,11 +32,12 @@
                 <div class="prod-slider">
                     <ul class="prod2-slider-car">
                         <?php foreach ($images as $i) : ?>
-                            <li>
-                                <a data-fancybox-group="product" class="fancy-img" href="<?php echo base_url('uploads/'.$i['path'])?>" >
-                                    <img src="<?php echo base_url('uploads/'.$i['path'])?>" alt="">
-                                </a>
-                            </li>
+                        <li>
+                            <a data-fancybox-group="product" class="fancy-img"
+                                href="<?php echo base_url('uploads/'.$i['path'])?>">
+                                <img src="<?php echo base_url('uploads/'.$i['path'])?>" alt="">
+                            </a>
+                        </li>
                         <?php endforeach ?>
                     </ul>
                 </div>
@@ -44,14 +45,14 @@
                     <ul class="prod2-thumbs-car">
                         <?php $slide_id=0?>
                         <?php foreach ($images as $i) : ?>
-                            <?php $slide_id=$slide_id+1;?>
-                            <li>
-                                <a data-slide-index="<?= $slide_id ?>" href="#">
-                                    <img class="scroll_active" src="<?php echo base_url('uploads/'.$i['path'])?>" alt="">
-                                </a>
-                            </li>
+                        <?php $slide_id=$slide_id+1;?>
+                        <li>
+                            <a data-slide-index="<?= $slide_id ?>" href="#">
+                                <img class="scroll_active" src="<?php echo base_url('uploads/'.$i['path'])?>" alt="">
+                            </a>
+                        </li>
                         <?php endforeach ?>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -60,30 +61,44 @@
             <div class="prod-cont">
                 <div class="prod-cont-inner">
                     <div class="prod-cont-txt">
-                        
+
                         <p class="prod-price">
-                            <b class="item_current_price">Stock : </b>
+                            <b class="item_current_price">Stock left : </b>
                         </p>
                         <p class="prod-price">
-                            <b class="item_current_price"><?= $item['stock'];?></b>
-                            <b class="item_current_price"> left</b>
+                            <b id="left" class="item_current_price"><?=$item['stock'];?></b>
+                            
+                            <?php if (!empty($cart)) : ?>
+                                <b class="item_current_price">(<?= $cart['quantity'] ;?> already in cart)</b>
+                            <?php endif ?>
                         </p>
                     </div>
                     <div class="prod-info">
                         <p class="prod-price">
+                            <?php empty($cart) ? 'Stock : ' : 'Stock in cart : '; ?>
                             <b class="item_current_price">Rp. <?= $item['price'] ;?></b>
                         </p>
+                    
                         <?= form_open_multipart(base_url('add/'.$item['i_id'])); ?>
                         <p class="prod-qnt">
-                            
+                            <?php if (empty($cart)) : ?>
                             <input name="qtt" id="prod" value="1" type="text">
+                            <?php else : ?>
+                            <input name="qtt" id="prod" value="<?= $cart['quantity'] ;?>" type="text">
+                            <?php endif ?>
+
                             <a href="#" onclick="plus()" class="prod-plus"><i class="fa fa-angle-up"></i></a>
                             <a href="#" onclick="minus()" class="prod-minus"><i class="fa fa-angle-down"></i></a>
                         </p>
                         <p class="prod-addwrap">
+                            <?php if (empty($cart)) : ?>
                             <?= form_submit('Send', 'Add to cart', ['class' => 'prod-add']) ?>
+                            <?php else : ?>
+                            <?= form_submit('Send', 'Update cart', ['class' => 'prod-add']) ?>
+                            <?php endif ?>
+                            <?= form_close() ?>
+
                         </p>
-                        <?= form_close() ?>
                     </div>
 
                     <!-- <ul class="prod-i-props">
@@ -96,16 +111,18 @@
                     <!-- Product Tabs -->
                     <div class="prod-tabs-wrap">
                         <ul class="prod-tabs">
-                            <li><a data-prodtab-num="1" class="active" href="#" data-prodtab="#prod-tab-1">Description</a></li>
+                            <li><a data-prodtab-num="1" class="active" href="#"
+                                    data-prodtab="#prod-tab-1">Description</a></li>
                             <!-- <li><a data-prodtab-num="2" href="#" data-prodtab="#prod-tab-5">Reviews</a></li> -->
                         </ul>
                         <div class="prod-tab-cont">
 
-                            <p data-prodtab-num="1" class="prod-tab-mob active" data-prodtab="#prod-tab-1">Description</p>
+                            <p data-prodtab-num="1" class="prod-tab-mob active" data-prodtab="#prod-tab-1">Description
+                            </p>
                             <div class="prod-tab stylization" id="prod-tab-1">
                                 <p><?= $item['description'] ;?></p>
                             </div>
-                            
+
                             <!-- <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-5">Reviews</p>
                             <div class="prod-tab" id="prod-tab-5">
                                 <ul class="reviews-list">
@@ -194,11 +211,11 @@
                                         </div>
                                     </form>
                                 </div> -->
-                            </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
         </div>
@@ -212,20 +229,28 @@
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ;?>
 <script>
+    var countEl = document.getElementById("prod");
+    var left = parseInt(document.getElementById("left").innerHTML);
+    function plus() {
+        // console.log(left)
+        // console.log("plus")
+        var count = countEl.value
+        if (count < left) {
+            count++;
+            countEl.value = count;
+        }
 
-var countEl = document.getElementById("prod");
-function plus(){
-    var count =countEl.value
-    count++;
-    countEl.value = count;
-}
-function minus(){
-    var count =countEl.value
-    if (count > 1) {
-    count--;
-    countEl.value = count;
-    }  
-}
+    }
+
+    function minus() {
+        // console.log(left)
+        // console.log("minus")
+        var count = countEl.value
+        if (count > 1) {
+            count--;
+            countEl.value = count;
+        }
+    }
 </script>
 
 <?= $this->endSection() ?>

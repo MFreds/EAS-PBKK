@@ -3,10 +3,28 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Category;
+use App\Models\Item;
+use App\Models\ItemImage;
+use App\Models\ItemEdit;
+use App\Models\Transaction;
+use App\Models\Cart;
 use App\Models\User;
 class Authorization extends BaseController
 {
-	public function index()
+    protected $transaction;
+	protected $user;
+	protected $cart;
+	protected $item;
+ 
+    function __construct()
+    {
+        $this->user = new User();
+		$this->transaction = new Transaction();
+		$this->cart = new Cart();
+		
+    }
+    public function index()
 	{
 		helper(['form']);
         $data = [];
@@ -16,7 +34,7 @@ class Authorization extends BaseController
     {
         helper(['form']);
 		$rules = [
-            'email'         => 'required|min_length[4]|max_length[50]|valid_email|is_unique[users.email]',
+            'email'         => 'required|min_length[4]|max_length[50]|valid_email|is_unique[this->user.email]',
             'password'      => 'required|min_length[8]|max_length[50]',
         ];
         if (!$this->validate($rules)) {
@@ -25,12 +43,11 @@ class Authorization extends BaseController
             // die();
             return redirect()->back();
         }
-        $users = new User();
         $data=[
             'email' => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
         ];
-        $users->save($data);
+        $this->user->save($data);
         session()->setFlashdata('sucess_register','Registrasi Berhasil Silahkan Login' );
         return redirect()->to('/auth');
 
@@ -39,23 +56,32 @@ class Authorization extends BaseController
 	public function login()
     {
         $session = session();
-        $users = new User();
+        $this->user = new User();
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
-        $dataUser = $users->where([
+        $dataUser = $this->user->where([
             'email' => $email,
         ])->first();
 
         if ($dataUser) {
             // echo $dataUser;
             if (password_verify($password, $dataUser['password'])) {
-                
+                $last=$this->transaction->getActiveTransaction($dataUser['u_id']);
+                if(empty($last)){
+                    $data=[
+                        'user_id' => $dataUser['u_id'],
+                        'status' => T_ACTIVE,
+                    ];
+                    $this->transaction->save($data);
+                    $last=$this->transaction->getActiveTransaction($dataUser['u_id']);
+                }
                 $ses_data=[
                     'id' => $dataUser['u_id'],
                     'email' => $dataUser['email'],
                     'logged_in' => TRUE,
-                    'role'  => $dataUser['role']
+                    'role'  => $dataUser['role'],
+                    'transaction' => $last
                 ];
                 $role=ROLE_CUSTOMER;
                 if($dataUser['role']==ROLE_ADMIN){

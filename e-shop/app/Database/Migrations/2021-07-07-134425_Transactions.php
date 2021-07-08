@@ -22,6 +22,10 @@ class Transactions extends Migration
 				'type'			=> 'INT',
 				'unsigned'		=> true,
 			],
+			'sum'	=>[
+				'type'			=> 'INT',
+				'unsigned'		=> true,
+			],
 			'created_at'	=>[
 				'type'			=> 'DATETIME',
 			],

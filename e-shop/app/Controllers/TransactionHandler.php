@@ -13,6 +13,9 @@ use App\Models\User;
 class TransactionHandler extends BaseController
 {
 	protected $transaction;
+	protected $user;
+	protected $cart;
+	protected $item;
  
     function __construct()
     {
@@ -21,25 +24,48 @@ class TransactionHandler extends BaseController
 		$this->cart = new Cart();
 		$this->item = new Item();
     }
-	function addToCart($i_id)
+	public function removeFromCart($i_id)
 	{
+		print_r($i_id);die();
 		$u_id=session()->get('id');
-		$last=$this->transaction->getActiveTransaction($u_id);
+		$trans=session()->get('transaction');
+		$cart_data=[
+			'transaction_id' => $trans['t_id'],
+			'item_id' => $i_id,
+		];
+		
+		$cart=$this->cart->where($cart_data)->first();
+		$cart_data['quantity']=1;
+		$cart_data['isdeleted']=C_DELETED;
+		$this->cart->update($cart['crt_id'],$cart_data);
+		return redirect()->back();
+	}
+	public function addToCart($i_id)
+	{
+		
+		$u_id=session()->get('id');
+		$trans=session()->get('transaction');
 		$quantity=$this->request->getPost('qtt');
-		if(empty($last)){
-			$data=[
-				'user_id' => $u_id,
-				'status' => T_ACTIVE,
-			];
-			$this->transaction->save($data);
-			$last=$this->transaction->getActiveTransaction($u_id);
-		}
+
 		$cart_data=[
 			'item_id' => $i_id,
-			'transaction_id' => $last['t_id'],
-			'quantity' => $quantity,
+			'transaction_id' => $trans['t_id'],
 		];
-		$this->cart->save($cart_data);
+		$cart=$this->cart->where($cart_data)->first();
+		$cart_data['quantity']=$quantity;
+		if(empty($cart)){
+			print_r();
+			die();
+			$this->cart->save($cart_data);
+		}else{
+
+			if($cart['isdeleted']==C_DELETED){
+				$cart_data['isdeleted']=C_ACTIVE;				
+			}
+			$this->cart->update($cart['crt_id'],$cart_data);
+		}
+		return redirect()->back();
 
 	}
+	
 }
