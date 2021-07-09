@@ -14,10 +14,10 @@
                 <a href="<?php echo base_url('/')?>">Home</a>
             </li>
             <li>
-                <a href="<?php echo base_url('catalog')?>"">Catalog</a>
+                <a href="<?php echo base_url('catalog/'.$item['c_id'])?>"">Catalog</a>
             </li>
             <li>
-                <a href=" <?php echo base_url('catalog')?>"><?= $item['category'] ;?></a>
+                <a href=" <?php echo base_url('catalog/'.$item['c_id'])?>"><?= $item['category'] ;?></a>
             </li>
             <li>
                 <span><?= $item['product_name'] ;?></span>

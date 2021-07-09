@@ -31,7 +31,11 @@ class TransactionHandler extends BaseController
 		
 		$u_id=session()->get('id');
 		$trans=session()->get('transaction');
-		$quantity=$this->request->getPost('qtt');
+		if($this->request->getPost('qtt')!=null){
+			$quantity=$this->request->getPost('qtt');
+		}else{
+			$quantity=1;
+		}
 
 		$cart_data=[
 			'item_id' => $i_id,

@@ -41,11 +41,12 @@ $routes->post('/auth/register', 'Authorization::register');
 $routes->post('/auth/login', 'Authorization::login');
 
 $routes->post('/add/(:num)', 'TransactionHandler::addToCart/$1');
+$routes->get('/add/(:num)', 'TransactionHandler::addToCart/$1');
 $routes->get('/remove/(:num)', 'TransactionHandler::removeFromCart/$1');
 $routes->get('/clear', 'TransactionHandler::clearCart');
 $routes->get('/checkout', 'TransactionHandler::checkoutCart');
 $routes->get('/cart', 'Home::carts');
-
+$routes->get('/catalog/(:num)', 'Home::catalog/$1');
 $routes->get('/admin/products/', 'ItemsInventory::list_item');
 $routes->get('/admin/products/add', 'ItemsInventory::new_item');
 $routes->post('/admin/products/add', 'ItemsInventory::save');

@@ -40,8 +40,6 @@ class Authorization extends BaseController
         ];
         if (!$this->validate($rules)) {
             session()->setFlashdata('error_reg', $this->validator->listErrors());
-            // echo session()->getFlashdata('error');
-            // die();
             return redirect()->back();
         }
         $data=[
@@ -81,6 +79,7 @@ class Authorization extends BaseController
                 $ses_data=[
                     'id' => $dataUser['u_id'],
                     'email' => $dataUser['email'],
+                    'name' => $dataUser['name'],
                     'logged_in' => TRUE,
                     'role'  => $dataUser['role'],
                     'transaction' => $last

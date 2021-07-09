@@ -43,9 +43,17 @@ class Item extends Model
 	public function getFullItems(){
 		return $this->db->table('items')
 				-> join('categories as c','c.c_id=items.category_id')
-				-> join('item_images as im','im.item_id=items.i_id','left')
+				-> join('item_images as im','im.item_id=items.i_id')
 				->groupBy('items.i_id')
 				->get()->getResultArray();
+	}
+	public function getFullItemsbyCategory($c_id,$paginate){
+		return $this->db->table('items')
+				-> join('categories as c','c.c_id=items.category_id')
+				-> join('item_images as im','im.item_id=items.i_id')
+				-> where('c.c_id',$c_id)
+				-> groupBy('items.i_id')
+				-> get()->getResultArray();
 	}
 	public function getFullItemsbyId($id){
 		return $this->db->table('items')

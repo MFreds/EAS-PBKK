@@ -44,8 +44,6 @@ class Home extends BaseController
         $data['item'] = $this->item->getFullItemsbyId($id);
 		$data['images'] = $this->item->getAllImages($id);
 		$data['cart']= $this->cart->getUserCart($id);
-		// print_r($data['cart']);
-		// die();
 		helper('form');
 		echo view('product',$data);
 	}
@@ -55,11 +53,13 @@ class Home extends BaseController
 		helper('form');
 		echo view('cart',$data);
 	}
-	// public function product1()
-	// {
-	// 	$item= new Item();
-    //     $data['item'] = $item->getFullItemsbyId(11);
-	// 	$data['images'] = $item->getAllImages(11);
-	// 	echo view('product',$data);
-	// }
+	public function catalog($c_id)
+	{
+		$cat= new Category();
+        $data['categories'] = $cat->findAll();
+		$data['category'] = $cat->where('c_id',$c_id)->get()->getRowArray();
+        $data['items'] = $this->item->where('category_id',$c_id)->paginate(9);
+		$data['pager'] = $this->item->pager;
+		echo view('catalog',$data);
+	}
 }
