@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="<?php echo base_url('/logout')?>">Logout</a>
             </li>
         </ul>
     </div>
