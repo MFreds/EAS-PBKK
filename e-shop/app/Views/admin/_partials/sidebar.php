@@ -23,7 +23,7 @@
             <span>Invoice</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo base_url('/logout')?>">
             <i class="fas fa-fw fa-window-close"></i>
             <span>Logout</span></a>
     </li>
