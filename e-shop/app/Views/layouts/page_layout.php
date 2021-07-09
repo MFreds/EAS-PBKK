@@ -53,6 +53,14 @@
                                 <span class="shop-menu-ttl"><?= session()->get('name') ;?></span>
                             </div>
                         </li>
+                        <?php if (session()->get('role')==ROLE_ADMIN) : ?>
+                            <li>
+                                <a href="<?php echo base_url('/admin')?>">
+                                    <i class="fa fa-tachometer"></i>
+                                    <span class="shop-menu-ttl">Dashboard</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
                         <li>
                             <div class="h-cart">
                                 <a href="<?php echo base_url('/cart')?>">
@@ -120,13 +128,6 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="topsearch">
-                        <a id="topsearch-btn" class="topsearch-btn" href="#"><i class="fa fa-search"></i></a>
-                        <form class="topsearch-form" action="<?php echo base_url('/search')?>">
-                            <input type="text" name="keyword" placeholder="Search products">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
                     <!-- Search - end -->
                 </nav>
             </div>
