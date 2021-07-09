@@ -47,12 +47,12 @@ class Home extends BaseController
 		helper('form');
 		echo view('product',$data);
 	}
-	public function carts()
-	{
-		$data['carts']=$this->transaction->getActiveTransactionCarts();
-		helper('form');
-		echo view('cart',$data);
-	}
+	// public function carts()
+	// {
+	// 	$data['carts']=$this->transaction->getActiveTransactionCarts();
+	// 	helper('form');
+	// 	echo view('cart',$data);
+	// }
 	public function catalog($c_id)
 	{
 		$cat= new Category();

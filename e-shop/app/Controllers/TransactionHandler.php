@@ -25,7 +25,12 @@ class TransactionHandler extends BaseController
 		$this->item = new Item();
     }
 
-	
+	public function carts()
+	{
+		$data['carts']=$this->transaction->getActiveTransactionCarts();
+		helper('form');
+		echo view('cart',$data);
+	}
 	public function addToCart($i_id)
 	{
 		

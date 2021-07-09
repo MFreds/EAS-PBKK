@@ -33,34 +33,41 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/admin', 'Home::admin');
 $routes->get('/product/(:num)', 'Home::product/$1');
-
-$routes->get('/auth', 'Authorization::index');
-$routes->post('/auth/register', 'Authorization::register');
-$routes->post('/auth/login', 'Authorization::login');
-$routes->get('/logout', 'Authorization::logout');
-$routes->post('/add/(:num)', 'TransactionHandler::addToCart/$1');
-$routes->get('/add/(:num)', 'TransactionHandler::addToCart/$1');
-$routes->get('/remove/(:num)', 'TransactionHandler::removeFromCart/$1');
-$routes->get('/clear', 'TransactionHandler::clearCart');
-$routes->get('/checkout', 'TransactionHandler::checkoutCart');
-$routes->get('/cart', 'Home::carts');
 $routes->get('/catalog/(:num)', 'Home::catalog/$1');
-$routes->get('/admin/products/', 'ItemsInventory::list_item');
-$routes->get('/admin/products/add', 'ItemsInventory::new_item');
-$routes->post('/admin/products/add', 'ItemsInventory::save');
 
-$routes->get('/admin/products/edit_item/(:num)', 'ItemsInventory::form_edit/$1');
-$routes->post('/admin/products/edit_item/(:num)', 'ItemsInventory::updateItem/$1');
+$routes->group('', ['filter' => 'is_logged_out'], function($routes) {
+	$routes->get('/auth', 'Authorization::index');
+	$routes->post('/auth/register', 'Authorization::register');
+	$routes->post('/auth/login', 'Authorization::login');
+});
 
-$routes->post('/admin/products/edit_image/(:num)', 'ItemsInventory::edit_img/$1');
-
-$routes->get('/admin/products/delete/(:num)', 'ItemsInventory::delete/$1');
-
-$routes->get('/admin/invoice/', 'ItemsInventory::invoice_list');
-
-$routes->get('/api/test', 'API::index');
+$routes->group('', ['filter' => 'is_logged_in'], function($routes) {
+	$routes->get('/logout', 'Authorization::logout');
+	$routes->post('/add/(:num)', 'TransactionHandler::addToCart/$1');
+	$routes->get('/add/(:num)', 'TransactionHandler::addToCart/$1');
+	$routes->get('/remove/(:num)', 'TransactionHandler::removeFromCart/$1');
+	$routes->get('/clear', 'TransactionHandler::clearCart');
+	$routes->get('/checkout', 'TransactionHandler::checkoutCart');
+	$routes->get('/cart', 'TransactionHandler::carts');
+});
+$routes->group('', ['filter' => 'is_logged_in','is_admin'], function($routes) {
+	$routes->get('/admin', 'Home::admin',['filter' => 'is_logged_in','is_admin']);
+	$routes->get('/admin/products/', 'ItemsInventory::list_item');
+	$routes->get('/admin/products/add', 'ItemsInventory::new_item');
+	$routes->post('/admin/products/add', 'ItemsInventory::save');
+	
+	$routes->get('/admin/products/edit_item/(:num)', 'ItemsInventory::form_edit/$1');
+	$routes->post('/admin/products/edit_item/(:num)', 'ItemsInventory::updateItem/$1');
+	
+	$routes->post('/admin/products/edit_image/(:num)', 'ItemsInventory::edit_img/$1');
+	
+	$routes->get('/admin/products/delete/(:num)', 'ItemsInventory::delete/$1');
+	
+	$routes->get('/admin/invoice/', 'ItemsInventory::invoice_list');
+	
+	$routes->get('/api/test', 'API::index');
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing
