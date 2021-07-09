@@ -43,10 +43,16 @@ class Cart extends Model
 	public function getUserCart($item_id){
 		
 		$trans=session()->get('transaction');
-		return $this->db->table('carts as c')
-				->where('c.transaction_id',$trans['t_id'])
-				->where('c.item_id',$item_id)
-				->where('c.isdeleted',C_ACTIVE)
-				->get()->getRowArray();
+		if($trans==null){
+			return array();
+		}
+		else{
+			return $this->db->table('carts as c')
+					->where('c.transaction_id',$trans['t_id'])
+					->where('c.item_id',$item_id)
+					->where('c.isdeleted',C_ACTIVE)
+					->get()->getRowArray();
+			
+		}
 	}
 }
