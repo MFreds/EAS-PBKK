@@ -83,9 +83,8 @@ defined('ROLE_CUSTOMER')    || define('ROLE_CUSTOMER', 0);
 defined('ROLE_ADMIN')       || define('ROLE_ADMIN', 1); 
 defined('T_ACTIVE')       || define('T_ACTIVE', 1); 
 defined('T_CHECKOUT')       || define('T_CHECKOUT', 2);
-defined('T_CONFIRMED')       || define('T_CONFIRMED', 3); 
-defined('T_DELIVERING')       || define('T_DELIVERING', 4); 
-defined('T_DONE')       || define('T_DONE', 5); 
+defined('I_DEACTIVE')       || define('I_DEACTIVE', 0);
+defined('I_ACTIVE')       || define('I_ACTIVE', 1); 
 
 defined('C_ACTIVE')       || define('C_ACTIVE', 0);
 defined('C_DELETED')       || define('C_DELETED', 1); 

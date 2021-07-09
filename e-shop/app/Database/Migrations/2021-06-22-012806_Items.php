@@ -30,6 +30,11 @@ class Items extends Migration
 				'type'			=> 'INT',
 				'unsigned'		=> true,
 			],
+			'i_status'	=>[
+				'type'			=> 'INT',
+				'unsigned'		=> true,
+				'default'		=> I_ACTIVE,
+			],
 			'stock'	=>[
 				'type'			=> 'INT',
 				'unsigned'		=> true,

@@ -50,8 +50,10 @@ class Transaction extends Model
 	public function getActiveTransactionCarts(){
 		
 		$trans=session()->get('transaction');
-		$count= $res=$this->db->table('carts as c')
-		-> join('items as i','c.item_id=i.i_id')->countAllResults();
+		$count= $this->db->table('carts as c')
+				-> join('items as i','c.item_id=i.i_id')
+				-> where('i.i_status',I_ACTIVE)
+				-> countAllResults();
 		
 		if($count<1) return array();
 		else 
@@ -60,6 +62,7 @@ class Transaction extends Model
 					-> join('item_images as im','c.item_id=im.item_id')
 					->where('c.transaction_id',$trans['t_id'])
 					->where('c.isdeleted',C_ACTIVE)
+					-> where('i.i_status',1)
 					->groupby('c.crt_id')
 					->get()->getResultArray();
 	}
@@ -72,8 +75,9 @@ class Transaction extends Model
 
 	public function getItemNumber($t_id){
 		
-		$count= $res=$this->db->table('carts as c')
-		-> join('items as i','c.item_id=i.i_id')->where('c.transaction_id', $t_id)->countAllResults();
+		$count= $this->db->table('carts as c')
+				-> join('items as i','c.item_id=i.i_id')
+				->where('c.transaction_id', $t_id)->countAllResults();
 
 		return count();
 	}

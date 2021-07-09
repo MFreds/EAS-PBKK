@@ -14,7 +14,7 @@ class Item extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['i_id','product_name','vendor','description','stock','price','category_id'];
+	protected $allowedFields        = ['i_id','product_name','i_status','vendor','description','stock','price','category_id'];
 
 	// Dates
 	protected $useTimestamps        = true;
@@ -44,6 +44,7 @@ class Item extends Model
 		return $this->db->table('items')
 				-> join('categories as c','c.c_id=items.category_id')
 				-> join('item_images as im','im.item_id=items.i_id')
+				-> where('items.i_status',I_ACTIVE)
 				->groupBy('items.i_id')
 				->get()->getResultArray();
 	}
@@ -52,6 +53,7 @@ class Item extends Model
 				-> join('categories as c','c.c_id=items.category_id')
 				-> join('item_images as im','im.item_id=items.i_id')
 				-> where('c.c_id',$c_id)
+				-> where('items.i_status',I_ACTIVE)
 				-> groupBy('items.i_id')
 				-> get()->getResultArray();
 	}
@@ -59,24 +61,29 @@ class Item extends Model
 		return $this->db->table('items')
 				-> join('categories as c','c.c_id=items.category_id')
 				->where('items.i_id',$id)
+				-> where('items.i_status',I_ACTIVE)
 				->get()->getRowArray();
 	}
 	public function getFewItems($limit,$order){
 		return $this->db->table('items')
 				-> join('categories as c','c.c_id=items.category_id')
 				-> join('item_images as im','im.item_id=items.i_id')
+				-> where('items.i_status',I_ACTIVE)
 				->groupBy('items.i_id')->orderBy("items.i_id",$order)
 				->limit($limit)->get()->getResultArray();
 	}
 	public function getAllImages($id){
 		return $this->db->table('items')
 				-> join('item_images as im','im.item_id=items.i_id')
-				->where('items.i_id',$id)->get()->getResultArray();
+				-> where('items.i_id',$id)
+				-> where('items.i_status',I_ACTIVE)
+				->get()->getResultArray();
 	}
 	public function getImages_byId($id){
 		return $this->db->table('items')
 				-> join('item_images as im','im.item_id=items.i_id')
 				->where('items.i_id',$id)
+				-> where('items.i_status',I_ACTIVE)
 				->get()->getRowArray();
 	}
 }

@@ -20,6 +20,7 @@
                         <th>Product Names</th>
                         <th>Vendor</th>
                         <th>Category</th>
+                        <th>Status</th>
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Description</th>
@@ -28,16 +29,28 @@
                     </thead>
                     <tbody>
                     <?php foreach ($items as $item) : ?>
+
                         <tr>
                             <td scope="row"><?= $item['product_name'] ?></td>
                             <td><?= $item['vendor'] ?></td>
                             <td><?= $item['category_id'] ?></td>
+                            <td>
+                            <?php if ($item['i_status']==I_ACTIVE) : ?>
+                                <?= "ACTIVE" ?>
+                            <?php else : ?>
+                                <?= "INACTIVE" ?>
+                            <?php endif ?>
+                            </td>
                             <td><?= $item['price'] ?></td>
                             <td><?= $item['stock'] ?></td>
                             <td><?= $item['description'] ?></td>
                             <td>
                             <a title="Edit" href="./products/edit_item/<?=$item['i_id'];?>" class="btn btn-info">Edit</a>
-                            <a title="Delete" href="<?= base_url("/admin/products/delete/".$item['i_id']) ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ?')">Delete</a>
+                            <?php if ($item['i_status']==I_ACTIVE) : ?>
+                                <a title="Delete" href="<?= base_url("/admin/products/delete/".$item['i_id']) ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to deactivate the item?')">DEACTIVATE</a>
+                            <?php else : ?>
+                                <a title="Undelete" href="<?= base_url("/admin/products/undelete/".$item['i_id']) ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to activate the item?')">ACTIVATE</a>
+                            <?php endif ?>
                             </td>
                         </tr>
                     <?php endforeach ?>

@@ -63,6 +63,7 @@ $routes->group('', ['filter' => 'is_logged_in','is_admin'], function($routes) {
 	$routes->post('/admin/products/edit_image/(:num)', 'ItemsInventory::edit_img/$1');
 	
 	$routes->get('/admin/products/delete/(:num)', 'ItemsInventory::delete/$1');
+	$routes->get('/admin/products/undelete/(:num)', 'ItemsInventory::undelete/$1');
 	
 	$routes->get('/admin/invoice/', 'ItemsInventory::invoice_list');
 	
