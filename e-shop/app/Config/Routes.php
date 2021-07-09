@@ -39,7 +39,7 @@ $routes->get('/product/(:num)', 'Home::product/$1');
 $routes->get('/auth', 'Authorization::index');
 $routes->post('/auth/register', 'Authorization::register');
 $routes->post('/auth/login', 'Authorization::login');
-
+$routes->get('/logout', 'Authorization::logout');
 $routes->post('/add/(:num)', 'TransactionHandler::addToCart/$1');
 $routes->get('/add/(:num)', 'TransactionHandler::addToCart/$1');
 $routes->get('/remove/(:num)', 'TransactionHandler::removeFromCart/$1');

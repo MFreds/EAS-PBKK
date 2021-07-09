@@ -34,7 +34,7 @@ class Authorization extends BaseController
     {
         helper(['form']);
 		$rules = [
-            'email'         => 'required|min_length[4]|max_length[50]|valid_email|is_unique[this->user.email]',
+            'email'         => 'required|min_length[4]|max_length[50]|valid_email|is_unique[users.email]',
             'name'         => 'required|min_length[4]|max_length[50]',
             'password'      => 'required|min_length[8]|max_length[50]',
         ];
@@ -106,6 +106,6 @@ class Authorization extends BaseController
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/auth');
+        return redirect()->to('/');
     }
 }
