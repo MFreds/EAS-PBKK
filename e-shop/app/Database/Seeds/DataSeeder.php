@@ -10,6 +10,6 @@ class DataSeeder extends Seeder
 	{
 		$this->call('Categories');
 		$this->call('Users');
-		// $this->call('Items');
+		$this->call('Items');
 	}
 }
